@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<BDSProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SOTBENV" LastModified="2019-09-15T15:28:59.3572883-07:00">
+<BDSProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SOTBENV" LastModified="2019-09-15T15:42:22.1602431-07:00">
   <Namespace>com.renesas</Namespace>
   <BaseGuid>837b0000-30a2-42ff-bd50-9b65a35b7244</BaseGuid>
   <Profile Name="org.bluetooth.profile.environmental_sensing" XMLFile="Profiles\org.bluetooth.profile.environmental_sensing.xml" />
