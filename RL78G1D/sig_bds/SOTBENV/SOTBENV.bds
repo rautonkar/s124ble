@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<BDSProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SOTBENV" LastModified="2019-09-15T15:28:59.3572883-07:00">
+  <Namespace>com.renesas</Namespace>
+  <BaseGuid>837b0000-30a2-42ff-bd50-9b65a35b7244</BaseGuid>
+  <Profile Name="org.bluetooth.profile.environmental_sensing" XMLFile="Profiles\org.bluetooth.profile.environmental_sensing.xml" />
+  <ServiceFiles>
+    <Service UID="bddcdb03-cea8-4f24-ba57-71455fa8aaa4" XMLFile="Services\org.bluetooth.service.environmental_sensing.xml" UUIDMode="Short">
+      <UUIDDisplayMode>Short</UUIDDisplayMode>
+      <CharacteristicFiles>
+        <Characteristic UID="bfdcb4c9-9e0c-4538-8ef7-9e2c381af17f" XMLFile="Characteristics\org.bluetooth.characteristic.descriptor_value_changed.xml" UUIDMode="Short" />
+        <Characteristic UID="09bdde92-e246-4128-a60f-d579158ff9b9" XMLFile="Characteristics\org.bluetooth.characteristic.apparent_wind_direction.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="1240546a-bdc2-4b98-b958-b97dbf571c56" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="384f7cea-d80b-4ff8-bc1d-cbe1af0544f1" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="95ec51cd-5f3c-498f-8955-5fc98c1c1b25" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="fc12126e-64d5-4e72-b664-8269372d80be" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="355cb2c0-15a3-44f8-9932-de419d7e621d" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="a37b790f-69da-4b92-a73e-d7de44d72e57" XMLFile="Characteristics\org.bluetooth.characteristic.apparent_wind_speed.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="5f29ada8-eb7b-426d-8cf5-8742a12b6137" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="79fb9ec4-3f48-4306-923d-8a5bdca6b5cd" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="ff314878-d8f8-4c09-aeee-dce67648d419" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="b2528604-d3dc-4e87-b608-343a93ce726b" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="0e15dff4-9333-4d87-ab89-4b90c1b81dc3" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="8f886ba1-e8a7-49e3-82e0-da1000312130" XMLFile="Characteristics\org.bluetooth.characteristic.dew_point.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="6bfa468a-3a4d-475e-a19d-b2d62a082148" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="3e211648-d303-4202-a215-fbd044198cb5" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="a1ab581e-d879-4e8d-a157-252c3c63cd6c" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="ad088b64-10b9-459a-a228-16683b0c8e58" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="de55ddc4-72ce-44e8-9f2d-9838b98456f9" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="b5ad089f-5e5b-4eac-afa5-c349e69f7991" XMLFile="Characteristics\org.bluetooth.characteristic.elevation.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="e9b4effb-06de-4473-8965-3c0e6cd0f9dc" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="801cc089-f4d8-46e2-a3f7-7258cbe5d9ef" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="8ffef756-3acc-4766-9d20-a808317e1dec" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="89e724ee-76a7-4ace-8e0a-ff90d0ee61d9" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="53a059bb-7c7e-4f1c-b9dc-1345ac0a9d3d" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="82e9d8a5-76e7-4456-9b1a-3545af2e38cc" XMLFile="Characteristics\org.bluetooth.characteristic.gust_factor.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="00227bd8-258a-4e41-839f-641daa31f8c0" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="4590fe77-d305-43c4-b17d-ae1754800120" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="ec885759-a7c9-489c-b153-f85dea616ca8" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="d599c353-8300-49ac-860a-91d12e83df20" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="77ad6d6d-8350-4214-bf94-d844e4dcd498" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="b6a1e621-cdee-4922-b134-7bdb0fef7cf4" XMLFile="Characteristics\org.bluetooth.characteristic.heat_index.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="51b1338d-e47e-4f9e-9e47-ae34f73f26cc" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="c6a3d4ce-c56a-4e50-8a35-4704c6c24a6d" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="cfdeb04b-c777-4d58-872b-a14569091665" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="ceecf44c-7b12-4b2b-a74b-d19b5daabdb8" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="6c8bb329-7945-4f24-b5fc-91100137403c" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="a49f0b1b-5c7d-41f1-87be-ecf8db9ae58c" XMLFile="Characteristics\org.bluetooth.characteristic.humidity.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="6d5422a1-9de4-4373-8987-9254254e04a3" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="681d7a87-c721-41e5-8233-4e240f9393a9" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="80bfaa99-8918-417a-97e0-172193a7a753" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="07aa3085-801c-4e9e-a8f2-12a5e12aad52" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="03bad81e-5ee1-460c-987e-22c066436140" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="59ebb9b3-52cf-4584-adda-406ccaaf47e3" XMLFile="Characteristics\org.bluetooth.characteristic.irradiance.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="1fa47a18-17d1-4862-bf24-65018ad28bea" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="429ab223-3dde-4a84-860e-57b3cba20615" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="8d96b92c-b323-4f82-b09c-bbe27d24f12c" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="234417d3-0bc0-4a54-bb08-97f1a0250f1a" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="eeba5a66-2cc8-4857-ae70-42e40e20f67a" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="2e4c1e8c-239d-4612-b548-31f808f8369d" XMLFile="Characteristics\org.bluetooth.characteristic.pollen_concentration.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="27ea5025-20d5-4491-be20-7d650114390f" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="085067d4-c2d9-47f1-92a1-c4d551ad80c8" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="8f9a42a2-7d30-47b7-9042-6c0918bc70e1" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="e41da19c-38ee-4710-830b-355139cbdc25" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="f3418ad5-4f39-4ad4-bb3b-16ffa7bebe88" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="8074612b-7ff9-4911-936a-60e27952f243" XMLFile="Characteristics\org.bluetooth.characteristic.rainfall.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="f92534bb-1bcd-4ec2-bf11-ba673b9c1de2" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="4b3ed121-235b-4821-8b90-a4c30c0cd3a2" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="066661d2-7162-4aa3-8e15-7e95eb206528" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="a3f393f8-9567-41cc-80a9-b3e5b9ea8bc6" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="0714d869-3926-470a-b475-0a436a1a9e20" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="98485e54-5911-462b-b11f-7019edb91b33" XMLFile="Characteristics\org.bluetooth.characteristic.pressure.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="911e0a09-f1a0-4d62-97c5-fe7475b17116" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="380d6bf8-5fba-4c6d-ad7e-970b36f175e2" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="4b6da32a-7482-42c0-bbee-8b3d5c297ef4" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="3d89c4dd-3f18-4ac2-ad9a-98476dfccfd8" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="01586c56-c122-4fe5-afe7-af61f918d9a0" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="248b06f9-c70f-43ff-acd2-0e67e7cb2cd2" XMLFile="Characteristics\org.bluetooth.characteristic.temperature.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="c317bab5-fcbf-40a0-a468-eb758398937b" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="ed015454-bec2-431b-a347-d1acc36e2dc7" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="88860947-7883-4524-a0b1-0003ece44a39" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="461e0f0e-c9d1-4d6f-9c6b-d3372ab1e1d3" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="5f9abbfd-66d3-4bac-8564-dfc9c9058a55" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="2e745b04-9702-406f-9974-2713ee36bf87" XMLFile="Characteristics\org.bluetooth.characteristic.true_wind_direction.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="29e3d1bc-a124-43f8-8dc6-f15846cfa9a6" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="7e883319-5d5f-4fa8-ba08-633c9bc965b6" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="50a700d7-acdc-4e8f-b8c7-7a45d1110312" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="ce79c1e6-0d49-4eb6-8591-5269057a0552" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="385231de-4036-44bb-80e7-ff3c3b0c00e2" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="d0e88548-155f-4c25-82dd-606f5621b66e" XMLFile="Characteristics\org.bluetooth.characteristic.true_wind_speed.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="bfba92bc-30fa-48bd-9f75-ee4548105dd1" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="d9701377-fd33-4ed1-aacc-0c2e07231c79" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="0045d2a0-231b-4b33-9144-23c51169b429" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="b6b17955-fa1b-43fd-aebf-14390a812b31" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="92a4ef22-0f4d-4a29-a1e5-739fde7b6bf8" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="79d053eb-2c4e-4e20-b303-f188c22e9092" XMLFile="Characteristics\org.bluetooth.characteristic.uv_index.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="8e21456b-f767-4132-980c-081cad8bc62f" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="4ed66f43-2391-4660-9cd8-27823234db07" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="e94942b5-e4a8-42b7-923d-284914c791ef" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="450b3e5c-8ac0-4bbc-9781-d9b405452afb" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="4dc72bc2-4666-4cb4-bacd-9bdbd46f6eac" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="a6a62d1e-618c-4a2a-9813-eed21d89aa6b" XMLFile="Characteristics\org.bluetooth.characteristic.wind_chill.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="25fb95d6-a170-4ba9-9565-436a0b0adfa0" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="3b55a49d-e466-428e-b2f0-b5ca61ebc74e" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="bda79e6e-86b2-4d45-86a8-277e359dd96b" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="867fdff6-1868-49e2-bd38-384596af22c3" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="8aab9c5b-201a-47e8-9fff-bbce79ca8b2b" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="b09ac493-fbba-4b15-9d5d-46f936fce571" XMLFile="Characteristics\org.bluetooth.characteristic.barometric_pressure_trend.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="504e6cb6-8733-4de1-ba05-7a357a03f2b2" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="4f9dbd15-18b6-44f0-8ea3-546e009decb6" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="e1ced386-d155-430a-8935-102d69712554" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="da25b0b1-c9d4-402c-9e56-6d7428ae8317" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="789b95d2-9e02-456f-877f-5d3058b2ba5d" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="282a979d-5928-4158-97a2-c82535b480ff" XMLFile="Characteristics\org.bluetooth.characteristic.magnetic_declination.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="b60e1dcf-8d45-4fa3-8ac0-ae4221a4c3be" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="c5e70c22-44fe-4742-864c-6eaec98de0fa" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="c62513ee-3402-47c8-a109-1eb6c921f619" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="019b7f9c-15c7-4ab9-8193-700a0e935cb2" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="bf6a315c-7110-463f-a4b1-d31cc04839c4" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="9f53fb49-2c29-4eca-95a6-a1268a7c78a6" XMLFile="Characteristics\org.bluetooth.characteristic.magnetic_flux_density_2D.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="7b053cf6-cadb-47e9-9164-4858b40178e0" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="cf34758b-7f0a-49a5-8bd9-684d7388a32c" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="391e8d53-e17c-417d-9661-90aaa6e54d5c" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="c2b3e3d2-a7f8-4c3e-acba-65423a6fbac8" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="1e1566b7-2d39-4baa-b81a-b05fad1ef004" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+        <Characteristic UID="03038df7-574b-4545-9494-9212f31793e1" XMLFile="Characteristics\org.bluetooth.characteristic.magnetic_flux_density_3D.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="b4bc6095-44aa-4888-a5dd-9767a6d7c147" XMLFile="Descriptors\org.bluetooth.descriptor.es_measurement.xml" UUIDMode="Short" />
+            <Descriptor UID="f913c379-26dc-4602-bf65-d34daf3d6eb2" XMLFile="Descriptors\org.bluetooth.descriptor.es_trigger_setting.xml" UUIDMode="Short" />
+            <Descriptor UID="45098d10-0d70-485d-b176-165a8104f58c" XMLFile="Descriptors\org.bluetooth.descriptor.es_configuration.xml" UUIDMode="Short" />
+            <Descriptor UID="a604099a-2ac2-4f0d-a5b7-11f50dcc9807" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_user_description.xml" UUIDMode="Short" />
+            <Descriptor UID="8598e9ab-8c0f-4458-9fa3-90c460ad22f3" XMLFile="Descriptors\org.bluetooth.descriptor.valid_range.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+      </CharacteristicFiles>
+    </Service>
+    <Service UID="a51ed0e1-8f73-47d9-99e8-3c64dae9bb8e" XMLFile="Services\org.bluetooth.service.device_information.xml" UUIDMode="Short">
+      <UUIDDisplayMode>Short</UUIDDisplayMode>
+      <CharacteristicFiles>
+        <Characteristic UID="99625dba-bbf6-4374-9223-c3769288efed" XMLFile="Characteristics\org.bluetooth.characteristic.manufacturer_name_string.xml" UUIDMode="Short" />
+        <Characteristic UID="44f38ca6-05f9-4129-a21a-9ace3ebef709" XMLFile="Characteristics\org.bluetooth.characteristic.model_number_string.xml" UUIDMode="Short" />
+        <Characteristic UID="4cb32efa-5330-42a8-9bfc-d45159d5ced2" XMLFile="Characteristics\org.bluetooth.characteristic.serial_number_string.xml" UUIDMode="Short" />
+        <Characteristic UID="dc8e0053-07d5-4156-955d-819a40bbd412" XMLFile="Characteristics\org.bluetooth.characteristic.hardware_revision_string.xml" UUIDMode="Short" />
+        <Characteristic UID="89f89d24-8026-44e6-b922-9904bc5d6ebf" XMLFile="Characteristics\org.bluetooth.characteristic.firmware_revision_string.xml" UUIDMode="Short" />
+        <Characteristic UID="ae8baf2c-b543-4451-8d28-8e0467656489" XMLFile="Characteristics\org.bluetooth.characteristic.software_revision_string.xml" UUIDMode="Short" />
+        <Characteristic UID="d4d11c63-d5cf-42e4-8749-1f8c0c394887" XMLFile="Characteristics\org.bluetooth.characteristic.system_id.xml" UUIDMode="Short" />
+        <Characteristic UID="37c4d1ef-3ea1-477f-946c-bed33f60b9dd" XMLFile="Characteristics\org.bluetooth.characteristic.ieee_11073-20601_regulatory_certification_data_list.xml" UUIDMode="Short" />
+        <Characteristic UID="00a4d51a-0a24-4417-8bc6-a184aba5761e" XMLFile="Characteristics\org.bluetooth.characteristic.pnp_id.xml" UUIDMode="Short" />
+      </CharacteristicFiles>
+    </Service>
+    <Service UID="b509aaa3-8df3-416f-b51a-be0cdf5e52c1" XMLFile="Services\org.bluetooth.service.battery_service.xml" UUIDMode="Short">
+      <UUIDDisplayMode>Short</UUIDDisplayMode>
+      <CharacteristicFiles>
+        <Characteristic UID="cd410881-4c25-4a1b-ac66-8c5c49cf7190" XMLFile="Characteristics\org.bluetooth.characteristic.battery_level.xml" UUIDMode="Short">
+          <DescriptorFiles>
+            <Descriptor UID="a86cf232-bf0b-4c00-a827-7819859349e0" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.characteristic_presentation_format.xml" UUIDMode="Short" />
+            <Descriptor UID="67fdfd47-6b2d-4f92-a9c9-a0eebae47b6b" XMLFile="Descriptors\org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml" UUIDMode="Short" />
+          </DescriptorFiles>
+        </Characteristic>
+      </CharacteristicFiles>
+    </Service>
+  </ServiceFiles>
+  <Workbench>
+    <Client Name="Virtual Client" />
+    <Peripheral Name="Virtual Server" />
+  </Workbench>
+  <SavePath>C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\RL78G1D\sig_bds\SOTBENV\SOTBENV.bds</SavePath>
+  <PublishData>
+    <LastPublishDate>0</LastPublishDate>
+    <Annotations>true</Annotations>
+    <Emulation>true</Emulation>
+  </PublishData>
+</BDSProject>
