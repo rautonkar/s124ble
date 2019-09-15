@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.renesas.cdt.ccrl.exe.debug.win32.configuration.Id.1762469057.1526541134">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.renesas.cdt.ccrl.exe.debug.win32.configuration.Id.1762469057.1526541134" moduleId="org.eclipse.cdt.core.settings" name="DefaultBuild">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.renesas.cdt.core.KPITGCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.renesas.cdt.core.KPITGASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.renesas.cdt.core.CCRXErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.renesas.cdt.core.KPITMakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.renesas.cdt.core.KPITGLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="hex" artifactName="rBLE_Mdm_R5F11AGG_CCRL" buildArtefactType="com.renesas.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=com.renesas.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf *.sni *.dbg *.lst *.lis *.lpp *.map *.x *.h *.lbk *.abs" description="Debug using GDB simulator" errorParsers="com.renesas.cdt.core.KPITGCCErrorParser;com.renesas.cdt.core.KPITGASErrorParser;com.renesas.cdt.core.CCRXErrorParser;com.renesas.cdt.core.KPITMakeErrorParser;com.renesas.cdt.core.KPITGLDErrorParser" id="com.renesas.cdt.ccrl.exe.debug.win32.configuration.Id.1762469057.1526541134" name="DefaultBuild" parent="com.renesas.cdt.ccrl.exe.debug.win32.configuration.Id">
+					<folderInfo id="com.renesas.cdt.ccrl.exe.debug.win32.configuration.Id.1762469057.1526541134." name="/" resourcePath="">
+						<toolChain id="com.renesas.cdt.ccrl.exe.debug.win32.toolChain.Id.677872575" name="Renesas CCRL Toolchain" superClass="com.renesas.cdt.ccrl.exe.debug.win32.toolChain.Id" targetTool="com.renesas.cdt.ccrl.exe.debug.win32.tool.convertor.Id">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.PE" id="com.renesas.cdt.ccrl.exe.debug.win32.targetPlatform.Id.1891327615" isAbstract="false" name="Target Platform" osList="win32" superClass="com.renesas.cdt.ccrl.exe.debug.win32.targetPlatform.Id"/>
+							<builder buildPath="${workspace_loc:/rBLE_Mdm_R5F11AGG}/Debug" id="com.renesas.cdt.ccrl.exe.debug.win32.builder.Id.1942712434" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Debug Builder" superClass="com.renesas.cdt.ccrl.exe.debug.win32.builder.Id"/>
+							<tool id="com.renesas.cdt.ccrl.exe.debug.win32.tool.common.Id.137381954" name="Common" superClass="com.renesas.cdt.ccrl.exe.debug.win32.tool.common.Id">
+								<option id="com.renesas.cdt.ccrl.common.option.device.76417047" name="CPU Device" superClass="com.renesas.cdt.ccrl.common.option.device" value="R5F11AGG" valueType="string"/>
+								<option id="com.renesas.cdt.ccrl.common.option.cpu.748659936" name="CPUコアの指定:" superClass="com.renesas.cdt.ccrl.common.option.cpu" value="com.renesas.cdt.ccrl.common.option.cpu.s2" valueType="enumerated"/>
+							</tool>
+							<tool id="com.renesas.cdt.ccrl.exe.debug.win32.tool.compiler.Id.533800976" name="Compiler" superClass="com.renesas.cdt.ccrl.exe.debug.win32.tool.compiler.Id">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" command="-I " id="com.renesas.cdt.ccrl.compiler.option.I.1795882748" name="インクルード・ファイル・ディレクトリー" superClass="com.renesas.cdt.ccrl.compiler.option.I" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${TCINSTALL}\inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\serial&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\wakeup&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\dataflash\cc_rl&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\dataflash&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\codeflash\cc_rl&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\codeflash&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\DTM2Wire&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\push_sw&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\pktmon&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\compiler&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\arch\rl78&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\arch\rl78\ll&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\led&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\peak&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\plf&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\port&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\rf&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\uart&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\..\bleip\src\common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\..\bleip\src\rwble&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\..\rBLE\src\include&quot;"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" command="-D " id="com.renesas.cdt.ccrl.compiler.option.D.267233185" name="定義マクロ" superClass="com.renesas.cdt.ccrl.compiler.option.D" valueType="stringList">
+									<listOptionValue builtIn="false" value="CFG_FULLEMB"/>
+									<listOptionValue builtIn="false" value="CFG_CON=1"/>
+									<listOptionValue builtIn="false" value="CFG_EXMEM_NOT_PRESENT"/>
+									<listOptionValue builtIn="false" value="CFG_BLECORE_10"/>
+									<listOptionValue builtIn="false" value="CFG_PROFEMB"/>
+									<listOptionValue builtIn="false" value="CFG_SECURITY_ON"/>
+									<listOptionValue builtIn="false" value="CFG_RBLE"/>
+									<listOptionValue builtIn="false" value="CFG_USE_EEL"/>
+									<listOptionValue builtIn="false" value="CFG_FW_NAK"/>
+									<listOptionValue builtIn="false" value="CONFIG_MODEM"/>
+									<listOptionValue builtIn="false" value="_USE_CCRL_RL78"/>
+									<listOptionValue builtIn="false" value="USE_SAMPLE_PROFILE"/>
+									<listOptionValue builtIn="false" value="noCFG_USE_PEAK"/>
+									<listOptionValue builtIn="false" value="noUSE_FW_UPDATE_PROFILE"/>
+									<listOptionValue builtIn="false" value="CLK_HOCO_8MHZ"/>
+									<listOptionValue builtIn="false" value="CLK_SUB_XT1"/>
+									<listOptionValue builtIn="false" value="noCFG_PKTMON"/>
+									<listOptionValue builtIn="false" value="_USE_R5F11AGG"/>
+								</option>
+								<option id="com.renesas.cdt.ccrl.compiler.option.characterSet.1715679234" name="文字コード:" superClass="com.renesas.cdt.ccrl.compiler.option.characterSet" value="com.renesas.cdt.ccrl.compiler.option.characterSet.sjis" valueType="enumerated"/>
+								<option id="com.renesas.cdt.ccrl.compiler.option.g.361191577" name="デバッグ情報を生成する" superClass="com.renesas.cdt.ccrl.compiler.option.g" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.ccrl.compiler.option.memoryModel.2143216886" name="メモリ・モデル:" superClass="com.renesas.cdt.ccrl.compiler.option.memoryModel" value="com.renesas.cdt.ccrl.compiler.option.memoryModel.medium" valueType="enumerated"/>
+								<option id="com.renesas.cdt.ccrl.compiler.option.goptimize.1876319444" name="モジュール間最適化用付加情報を出力する" superClass="com.renesas.cdt.ccrl.compiler.option.goptimize" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.ccrl.compiler.option.userDefined.1845873933" name="ユーザー定義オプション" superClass="com.renesas.cdt.ccrl.compiler.option.userDefined" valueType="stringList">
+									<listOptionValue builtIn="false" value="-cref=${ConfigName}"/>
+									<listOptionValue builtIn="false" value="-convert_cc=ca78k0r"/>
+									<listOptionValue builtIn="false" value="-no_warning_num=23082"/>
+								</option>
+								<option id="com.renesas.cdt.ccrl.compiler.option.optimization.634094667" name="最適化レベル:" superClass="com.renesas.cdt.ccrl.compiler.option.optimization" value="com.renesas.cdt.ccrl.compiler.option.optimization.Osize" valueType="enumerated"/>
+								<option command="-asmopt=-prn_path=&quot;$(dir $@)&quot;" id="com.renesas.cdt.ccrl.compiler.option.prnPath.346087348" name="アセンブル・リスト・ファイルを出力する" superClass="com.renesas.cdt.ccrl.compiler.option.prnPath" value="false" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.ccrl.compiler.option.predefineMacros.1031671294" name="Pre-defined Macros" superClass="com.renesas.cdt.ccrl.compiler.option.predefineMacros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__RENESAS__=1"/>
+									<listOptionValue builtIn="false" value="__RL78__=1"/>
+									<listOptionValue builtIn="false" value="__CCRL__=1"/>
+									<listOptionValue builtIn="false" value="__CCRL=1"/>
+									<listOptionValue builtIn="false" value="__BASE_FILE__=__FILE__"/>
+									<listOptionValue builtIn="false" value="__RENESAS_VERSION__=0x01030000"/>
+									<listOptionValue builtIn="false" value="__STDC__"/>
+									<listOptionValue builtIn="false" value="__STDC_VERSION__"/>
+									<listOptionValue builtIn="false" value="__RL78_S2__=1"/>
+									<listOptionValue builtIn="false" value="__RL78_MEDIUM__=1"/>
+									<listOptionValue builtIn="false" value="__SCHAR=1"/>
+									<listOptionValue builtIn="false" value="__UBIT=1"/>
+									<listOptionValue builtIn="false" value="__DBL4=1"/>
+									<listOptionValue builtIn="false" value="CFG_FULLEMB"/>
+									<listOptionValue builtIn="false" value="CFG_CON=1"/>
+									<listOptionValue builtIn="false" value="CFG_EXMEM_NOT_PRESENT"/>
+									<listOptionValue builtIn="false" value="CFG_BLECORE_10"/>
+									<listOptionValue builtIn="false" value="CFG_PROFEMB"/>
+									<listOptionValue builtIn="false" value="CFG_SECURITY_ON"/>
+									<listOptionValue builtIn="false" value="CFG_RBLE"/>
+									<listOptionValue builtIn="false" value="CFG_USE_EEL"/>
+									<listOptionValue builtIn="false" value="CFG_FW_NAK"/>
+									<listOptionValue builtIn="false" value="CONFIG_MODEM"/>
+									<listOptionValue builtIn="false" value="_USE_CCRL_RL78"/>
+									<listOptionValue builtIn="false" value="USE_SAMPLE_PROFILE"/>
+									<listOptionValue builtIn="false" value="noCFG_USE_PEAK"/>
+									<listOptionValue builtIn="false" value="noUSE_FW_UPDATE_PROFILE"/>
+									<listOptionValue builtIn="false" value="CLK_HOCO_8MHZ"/>
+									<listOptionValue builtIn="false" value="CLK_SUB_XT1"/>
+									<listOptionValue builtIn="false" value="noCFG_PKTMON"/>
+									<listOptionValue builtIn="false" value="_USE_R5F11AGG"/>
+								</option>
+								<option id="com.renesas.cdt.ccrl.compiler.option.signedChar.1258622362" name="char型の符号:" superClass="com.renesas.cdt.ccrl.compiler.option.signedChar" value="com.renesas.cdt.ccrl.compiler.option.signedChar.handlesAsSignedChar" valueType="enumerated"/>
+								<option id="com.renesas.cdt.ccrl.compiler.option.switch.11627197" name="switch文の出力コードの選択:" superClass="com.renesas.cdt.ccrl.compiler.option.switch" value="com.renesas.cdt.ccrl.compiler.option.switch.binarySearch" valueType="enumerated"/>
+								<inputType id="%Base.Compiler.ccrl.C.inputType.Id.1882239292" name="C Input" superClass="%Base.Compiler.ccrl.C.inputType.Id"/>
+							</tool>
+							<tool id="com.renesas.cdt.ccrl.exe.debug.win32.tool.assembler.Id.444762238" name="Assembler" outputFlag="" superClass="com.renesas.cdt.ccrl.exe.debug.win32.tool.assembler.Id">
+								<option id="com.renesas.cdt.ccrl.assembler.option.characterSet.2129305708" name="文字コード:" superClass="com.renesas.cdt.ccrl.assembler.option.characterSet" value="com.renesas.cdt.ccrl.assembler.option.characterSet.sjis" valueType="enumerated"/>
+								<option id="com.renesas.cdt.ccrl.assembler.option.g.1332925547" name="デバッグ情報を生成する" superClass="com.renesas.cdt.ccrl.assembler.option.g" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.ccrl.assembler.option.goptimize.2139141269" name="モジュール間最適化用付加情報を出力する" superClass="com.renesas.cdt.ccrl.assembler.option.goptimize" value="true" valueType="boolean"/>
+								<option command="-asmopt=-prn_path=&quot;$(dir $@)&quot;" id="com.renesas.cdt.ccrl.assembler.option.prnPath.1504173549" name="アセンブル・リスト・ファイルを出力する" superClass="com.renesas.cdt.ccrl.assembler.option.prnPath" value="false" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.ccrl.assembler.option.userDefined.1108920407" name="ユーザー定義オプション" superClass="com.renesas.cdt.ccrl.assembler.option.userDefined" valueType="stringList">
+									<listOptionValue builtIn="false" value="-asmopt=-convert_asm"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.ccrl.assembler.option.predefineMacros.411749407" name="Pre-defined Macros" superClass="com.renesas.cdt.ccrl.assembler.option.predefineMacros" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__RENESAS_VERSION__=0x01030000"/>
+								</option>
+								<inputType id="%Base.Assembler.ccrl.inputType.Id.262706409" name="Assembler Input" superClass="%Base.Assembler.ccrl.inputType.Id"/>
+							</tool>
+							<tool id="com.renesas.cdt.ccrl.exe.debug.win32.tool.linker.Id.264574394" name="Linker" superClass="com.renesas.cdt.ccrl.exe.debug.win32.tool.linker.Id">
+								<option id="com.renesas.cdt.ccrl.linker.option.optimize.1456701500" name="最適化方法:" superClass="com.renesas.cdt.ccrl.linker.option.optimize" value="com.renesas.cdt.ccrl.linker.option.optimize.custom" valueType="enumerated"/>
+								<option command="-debug_monitor" id="com.renesas.cdt.ccrl.linker.option.debugMonitorUse.232105036" name="デバッグ・モニタのメモリ範囲を指定する。" superClass="com.renesas.cdt.ccrl.linker.option.debugMonitorUse" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.ccrl.linker.option.linkageOrderList.1738885044" name="" superClass="com.renesas.cdt.ccrl.linker.option.linkageOrderList" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_HOST_lib_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_CONTROLLER_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_rBLE_lib_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_BLP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_FMP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_HGP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_HTP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_PXP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_SCP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_HRP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_CSP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_GLP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_CPP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_TIP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_ANP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_LNP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_PAP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_RSP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILES_COMMON_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\dataflash\cc_rl\fdl.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\dataflash\cc_rl\eel.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\codeflash\cc_rl\fsl.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\wakeup\wakeup.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\uart\uart.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\push_sw\push_sw.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\plf\plf.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\peak\peak_isr.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\led\led.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\dataflash\dataflash.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\dataflash\eel_descriptor_t02.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\dataflash\fdl_descriptor_t02.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\DTM2Wire\DTM2Wire.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\compiler\ccrl\cstart.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\arch_main.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\fw_update_count0.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\fw_update_count1.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\ke_conf.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\main.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\prf_config.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\prf_config_host.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\rble_core_config.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\rble_modem_config.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\arch\rl78\rwble_mem.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\rBLE\src\sample_profile\fwup\fwupr.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\rBLE\src\sample_app\rble_fw_up_receiver_app.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\Project_Source\renesas\src\driver\codeflash\codeflash.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\PROGRA~1\RENESA~2\CS_~1\CC\CC-RL\V102~1.00\lib\rl78cm4s.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\PROGRA~1\RENESA~2\CS_~1\CC\CC-RL\V102~1.00\lib\rl78cm4r.lib&quot;"/>
+								</option>
+								<option id="com.renesas.cdt.ccrl.linker.option.optimize.branch.334451149" name="分岐命令サイズを最適化する" superClass="com.renesas.cdt.ccrl.linker.option.optimize.branch" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.autoSectionLayout.443577425" name="セクションを自動的に配置する" superClass="com.renesas.cdt.ccrl.linker.option.autoSectionLayout" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.securityId.411663456" name="セキュリティID" superClass="com.renesas.cdt.ccrl.linker.option.securityId" value="00000000000000000000" valueType="string"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.ocdbgValue.165240822" name="オンチップ・デバッグ・オプション・バイト制御値" superClass="com.renesas.cdt.ccrl.linker.option.ocdbgValue" value="85" valueType="string"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.debugMonitorValue.837829455" name="デバッグ・モニタ領域の範囲" superClass="com.renesas.cdt.ccrl.linker.option.debugMonitorValue" value="1fe00-1ffff" valueType="string"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.userOptByteValue.1074746927" name="ユーザ・オプション・バイト値" superClass="com.renesas.cdt.ccrl.linker.option.userOptByteValue" value="efffaa" valueType="string"/>
+								<option defaultValue="Yes(Output to the output file)" id="com.renesas.cdt.ccrl.linker.option.debugInfo.489373401" name="デバッグ情報を出力する：" superClass="com.renesas.cdt.ccrl.linker.option.debugInfo" value="com.renesas.cdt.ccrl.linker.option.debugInfo.debug" valueType="enumerated"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.compressCommand.567135060" name="デバッグ情報を圧縮する" superClass="com.renesas.cdt.ccrl.linker.option.compressCommand" value="false" valueType="boolean"/>
+								<option command="-library=&quot;C:\PROGRA~1\RENESA~2\CS_~1\CC\CC-RL\V102~1.00\lib\rl78cm4r.lib&quot;" id="com.renesas.cdt.ccrl.linker.option.runtime.library.773492477" name="ランタイム・ライブラリを使用する" superClass="com.renesas.cdt.ccrl.linker.option.runtime.library" value="true" valueType="boolean"/>
+								<option command="-library=&quot;C:\PROGRA~1\RENESA~2\CS_~1\CC\CC-RL\V102~1.00\lib\rl78cm4s.lib&quot;" id="com.renesas.cdt.ccrl.linker.option.standard.library.2099155667" name="標準・数学ライブラリを使用する" superClass="com.renesas.cdt.ccrl.linker.option.standard.library" value="true" valueType="boolean"/>
+								<option command="-list=&quot;rBLE_Mdm_R5F11AGG_CCRL.map&quot;" id="com.renesas.cdt.ccrl.linker.option.list.1384598149" name="リンク・マップ・ファイルを出力する" superClass="com.renesas.cdt.ccrl.linker.option.list" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.ccrl.linker.option.inputFile.1178735307" name="リロケータブル・ファイル、オブジェクト・ファイル、およびライブラリー・ファイル" superClass="com.renesas.cdt.ccrl.linker.option.inputFile" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_HOST_lib_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_CONTROLLER_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_rBLE_lib_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_BLP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_FMP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_HGP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_HTP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_PXP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_SCP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_HRP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_CSP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_GLP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_CPP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_TIP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_ANP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_LNP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_PAP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILE_RSP_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\lib\BLE_PROFILES_COMMON_LIB_CCRL.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\dataflash\cc_rl\fdl.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\dataflash\cc_rl\eel.lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;..\..\..\..\..\..\src\driver\codeflash\cc_rl\fsl.lib&quot;"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.ccrl.linker.option.userDefined.1311609815" name="ユーザー定義オプション" superClass="com.renesas.cdt.ccrl.linker.option.userDefined" valueType="stringList">
+									<listOptionValue builtIn="false" value="-NOMessage"/>
+									<listOptionValue builtIn="false" value="-Total_size"/>
+									<listOptionValue builtIn="false" value="-NOLOgo"/>
+								</option>
+								<option id="com.renesas.cdt.ccrl.linker.option.useCustomLinkageOrder.435832769" name="リンク順序のカスタマイズの使用" superClass="com.renesas.cdt.ccrl.linker.option.useCustomLinkageOrder" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.ocdbgUse.1272570863" name="オンチップ・デバッグの許可／禁止をリンク・オプションで設定する" superClass="com.renesas.cdt.ccrl.linker.option.ocdbgUse" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.userOptByteUse.1077044174" name="ユーザ・オプション・バイトを設定する" superClass="com.renesas.cdt.ccrl.linker.option.userOptByteUse" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.show.214011246" name="出力方法:" superClass="com.renesas.cdt.ccrl.linker.option.show" value="com.renesas.cdt.ccrl.linker.option.show.all" valueType="enumerated"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.stack.1791836394" name="スタック使用量情報ファイルを出力する" superClass="com.renesas.cdt.ccrl.linker.option.stack" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.vfInfo.314266311" name="配置最適化を行う" superClass="com.renesas.cdt.ccrl.linker.option.vfInfo" value="com.renesas.cdt.ccrl.linker.option.vfInfo.no" valueType="enumerated"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.entry.1294486067" name="エントリー・ポイントを使用する" superClass="com.renesas.cdt.ccrl.linker.option.entry" value="true" valueType="boolean"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.occupiedRAM.858711608" name="占有するRAM領域" superClass="com.renesas.cdt.ccrl.linker.option.occupiedRAM" value="com.renesas.cdt.ccrl.linker.option.occupiedRAM.self" valueType="enumerated"/>
+								<option id="com.renesas.cdt.ccrl.linker.option.entryValue.440821359" name="エントリー・ポイントのシンボル" superClass="com.renesas.cdt.ccrl.linker.option.entryValue" value="_start" valueType="string"/>
+							</tool>
+							<tool id="com.renesas.cdt.ccrl.exe.debug.win32.tool.convertor.Id.2099528559" name="Converter" superClass="com.renesas.cdt.ccrl.exe.debug.win32.tool.convertor.Id">
+								<option id="com.renesas.cdt.ccrl.converter.option.outputHexFile.1077711754" name="ヘキサ・ファイルを出力する" superClass="com.renesas.cdt.ccrl.converter.option.outputHexFile" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.renesas.cdt.ccrl.converter.option.divisionOutput.1762718192" name="分割出力ファイル" superClass="com.renesas.cdt.ccrl.converter.option.divisionOutput" valueType="stringList"/>
+								<option id="com.renesas.cdt.ccrl.converter.option.form.706533022" name="ヘキサ・ファイル・フォーマット：" superClass="com.renesas.cdt.ccrl.converter.option.form" value="com.renesas.cdt.ccrl.converter.option.form.hex" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.ccrl.converter.option.userDefined.1449447401" name="ユーザー定義オプション" superClass="com.renesas.cdt.ccrl.converter.option.userDefined" valueType="stringList">
+									<listOptionValue builtIn="false" value="-logo"/>
+									<listOptionValue builtIn="false" value="-NOMessage"/>
+								</option>
+								<option id="com.renesas.cdt.ccrl.converter.option.outputFilePath.1450353927" name="出力ファイル" superClass="com.renesas.cdt.ccrl.converter.option.outputFilePath" value="${CONFIGDIR:/${ArtifactName}}.hex" valueType="string"/>
+								<option id="com.renesas.cdt.ccrl.converter.option.recordHex.1195957848" name="レコード・サイズを統一する（インテルHEX形式ファイル:" superClass="com.renesas.cdt.ccrl.converter.option.recordHex" value="com.renesas.cdt.ccrl.converter.option.recordHex.h20" valueType="enumerated"/>
+								<option id="com.renesas.cdt.ccrl.converter.option.byteCount.1984441735" name="データ・レコードのバイト数最大値" superClass="com.renesas.cdt.ccrl.converter.option.byteCount" value="10" valueType="string"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Project_Source" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="renesas/src/compiler/ccrl/stkinit.asm|renesas/src/compiler/ccrl/hdwinit.asm" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Project_Source"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.pathentry"/>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="rBLE_Mdm_R5F11AGG.com.renesas.cdt.ccrl.exe.projectType.win32.Id.774810684" name="Executable (Renesas)" projectType="com.renesas.cdt.ccrl.exe.projectType.win32.Id"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="DefaultBuild">
+			<resource resourceType="PROJECT" workspacePath="/rBLE_Mdm_R5F11AGG"/>
+		</configuration>
+	</storageModule>
+</cproject>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ASCII"?>
+<com.renesas.linkersection.model:SectionContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.renesas.linkersection.model="http:///LinkerSection.ecore">
+  <sections name="ROM_BOOT0">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="216"/>
+  </sections>
+  <sections name=".RLIB"/>
+  <sections name="MAIN_CN0*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="4094"/>
+  </sections>
+  <sections name="MAIN_CN1*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="8190"/>
+  </sections>
+  <sections name=".SLIB">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="8192"/>
+  </sections>
+  <sections name="HDB_CNST*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="12288"/>
+  </sections>
+  <sections name="HST_CNST*"/>
+  <sections name="CNT_CNST*"/>
+  <sections name="RBL_CNST*"/>
+  <sections name="MAINCNST*"/>
+  <sections name="DFL_CNST*"/>
+  <sections name=".const">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="17408"/>
+  </sections>
+  <sections name="ACS_TBL*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="43008"/>
+  </sections>
+  <sections name="CLK_TBL*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="43088"/>
+  </sections>
+  <sections name="TSK_DESC*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="43136"/>
+  </sections>
+  <sections name=".constf">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="45056"/>
+  </sections>
+  <sections name=".sdata"/>
+  <sections name=".data"/>
+  <sections name=".text"/>
+  <sections name="UARTCODE_n"/>
+  <sections name="CNT_CODE_n">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="57344"/>
+  </sections>
+  <sections name="HST_CODE_n"/>
+  <sections name="RBL_CODE_n"/>
+  <sections name="FDL_CNST*"/>
+  <sections name="EEL_CNST*"/>
+  <sections name="FDL_CODE*"/>
+  <sections name="EEL_CODE*"/>
+  <sections name="FSL_FCD*"/>
+  <sections name="FSL_BCD*"/>
+  <sections name="FSL_BECD*"/>
+  <sections name="FSL_RCD*"/>
+  <sections name="DFL_CODE_f"/>
+  <sections name="CFL_CODE_f"/>
+  <sections name="MAINCODE_f">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="65536"/>
+  </sections>
+  <sections name="HST_CODE_f"/>
+  <sections name="CNT_CODE_f"/>
+  <sections name="RBL_CODE_f"/>
+  <sections name="PLF_CODE_f"/>
+  <sections name="UARTCODE_f"/>
+  <sections name=".textf">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="196608"/>
+  </sections>
+  <sections name="CNT_DATA*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="1028880"/>
+  </sections>
+  <sections name="MAINDATA*"/>
+  <sections name="HDB_DATA*"/>
+  <sections name="HST_DATA*"/>
+  <sections name="RBL_DATA*"/>
+  <sections name="CFL_DATA*"/>
+  <sections name="DFL_DATA*"/>
+  <sections name="UARTDATA*"/>
+  <sections name=".bss">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="1032752"/>
+  </sections>
+  <sections name=".dataR"/>
+  <sections name="FDL_SDAT*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="1048096"/>
+  </sections>
+  <sections name="EEL_SDAT*"/>
+  <sections name=".sbss">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="1048100"/>
+  </sections>
+  <sections name=".sdataR"/>
+</com.renesas.linkersection.model:SectionContainer>

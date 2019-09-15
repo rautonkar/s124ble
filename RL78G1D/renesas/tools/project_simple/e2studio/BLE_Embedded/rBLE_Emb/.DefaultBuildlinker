@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<com.renesas.linkersection.model:SectionContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.renesas.linkersection.model="http:///LinkerSection.ecore">
+  <sections name="FDL_CNST*, EEL_CNST*, FDL_CODE*, EEL_CODE*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="4096"/>
+  </sections>
+  <sections name="FDL_SDAT*, EEL_SDAT*">
+    <sectionAddress xsi:type="com.renesas.linkersection.model:FixedAddress" fixedAddress="1048096"/>
+  </sections>
+</com.renesas.linkersection.model:SectionContainer>

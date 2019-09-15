@@ -1,0 +1,366 @@
+//-------------------------------------------------------------------------
+//      ILINK command file template for RL78 microcontroller R5F11AGJ.
+//
+//      This file can be used to link object files from the RL78
+//      Assembler, IASMRL78, and the C/C++ compiler ICCRL78.
+//
+//          This file is generated from the device file:
+//          DR5F11AGJ.DVF
+//          Copyright(C) 2015 Renesas
+//
+//          Core type: s2
+//
+//          Format version 3.00, File version 1.10 
+//-------------------------------------------------------------------------
+
+initialize by copy with simple ranges, packing = auto { rw };
+initialize manually {
+                        ro section MAINCNST,
+                        ro section CNT_CNST,
+                        ro section HST_CNST,
+                        ro section RBL_CNST,
+                        ro section HDB_CNST,
+                        ro section .const
+                    };
+do not initialize   { section *.noinit };
+
+define memory mem with size = 1M;
+
+
+/*
+ ***************************************************************************************************
+ * FOR DEBUG
+ ***************************************************************************************************
+ */
+// Set the symbol __RESERVE_OCD_ROM to 1 to reserve the OCD area for debugging.
+// IDE: Symbol can be defined within the project settings here:
+//      "Project"-->"Options..."->"Linker"-->"Config"-->"Configuration file symbol definitions"
+//      Symbol definition: __RESERVE_OCD_ROM=1
+// Command line: --config_def __RESERVE_OCD_ROM=1
+
+if (isdefinedsymbol(__RESERVE_OCD_ROM))
+{
+  if (__RESERVE_OCD_ROM == 1)
+  {
+    define region OCD_ROM_AREA = mem:[from 0x3FE00 size 0x0200];
+  }
+  else
+  {
+    define region OCD_ROM_AREA = mem:[from 0x0 size 0];
+  }
+}
+else
+{
+  define region OCD_ROM_AREA = mem:[from 0x0 size 0];
+}
+
+define region OCD_TRACE_RAM = mem:[from 0x0 size 0];
+
+define region HOTPLUGIN_RAM = mem:[from 0x0 size 0];
+
+define region EXLUDE_ROM_REGION = OCD_ROM_AREA;
+define region EXLUDE_RAM_REGION = HOTPLUGIN_RAM | OCD_TRACE_RAM;
+
+
+/*
+ ***************************************************************************************************
+ * REGION DEFINITIONS
+ ***************************************************************************************************
+ */
+define region ROM_near = mem:[from 0x000D8 to 0x0FFFF] - EXLUDE_ROM_REGION;
+define region ROM_far  = mem:[from 0x10000 to 0x1FFFF] | mem:[from 0x20000 to 0x2FFFF] | mem:[from 0x30000 to 0x3FFFF] - EXLUDE_ROM_REGION;
+define region ROM_huge = mem:[from 0x10000 to 0x3FFFF] - EXLUDE_ROM_REGION;
+define region SADDR    = mem:[from 0xFFE20 to 0xFFEDF] - EXLUDE_RAM_REGION;
+define region RAM_near = mem:[from 0xFB310 to 0xFFE1F] - EXLUDE_RAM_REGION;
+define region RAM_far  = mem:[from 0xFB310 to 0xFFE1F] - EXLUDE_RAM_REGION;
+define region RAM_huge = mem:[from 0xFB310 to 0xFFE1F] - EXLUDE_RAM_REGION;
+define region VECTOR   = mem:[from 0x00000 to 0x0007F];
+define region CALLT    = mem:[from 0x00080 to 0x000BF];
+define region EEPROM   = mem:[from 0xF1000 to 0xF2FFF];
+
+
+/*
+ ***************************************************************************************************
+ * BLOCK DEFINITIONS
+ ***************************************************************************************************
+ */
+define block NEAR_HEAP  with alignment = 2, size = _NEAR_HEAP_SIZE {  };
+define block FAR_HEAP   with alignment = 2, size = _FAR_HEAP_SIZE {  };
+define block HUGE_HEAP  with alignment = 2, size = _HUGE_HEAP_SIZE {  };
+define block CSTACK     with alignment = 2, size = _STACK_SIZE { rw section CSTACK };
+define block INIT_ARRAY with alignment = 2, fixed order { ro section .preinit_array, ro section .init_array };
+
+define block MIRROR_ROM_BLE_STACK with size = 0x1400, fixed order   {
+                                                                        block MROM1 with alignment = 2 {ro section MAINCNST_init},
+                                                                        block MROM2 with alignment = 2 {ro section CNT_CNST_init},
+                                                                        block MROM3 with alignment = 2 {ro section HST_CNST_init},
+                                                                        block MROM4 with alignment = 2 {ro section RBL_CNST_init},
+                                                                        block MROM5 with alignment = 2 {ro section HDB_CNST_init}
+                                                                    };
+
+define block MIRROR_ROM_APP with maximum size = _NEAR_CONST_LOCATION_SIZE - 0x1400 {
+                                                                                       ro section .const_init
+                                                                                   };
+
+define block MIRROR_RAM_BLE_STACK with size = 0x1400, fixed order   {
+                                                                        block MRAM1 with alignment = 2 {rw section MAINCNST},
+                                                                        block MRAM2 with alignment = 2 {rw section CNT_CNST},
+                                                                        block MRAM3 with alignment = 2 {rw section HST_CNST},
+                                                                        block MRAM4 with alignment = 2 {rw section RBL_CNST},
+                                                                        block MRAM5 with alignment = 2 {rw section HDB_CNST}
+                                                                    };
+
+define block MIRROR_RAM_APP with maximum size = _NEAR_CONST_LOCATION_SIZE - 0x1400 {
+                                                                                       rw section .const
+                                                                                   };
+
+
+define block OPT_BYTE with size = 4     {
+                                            ro section .option_byte
+                                        };
+
+define block SECUR_ID with size = 10    {
+                                            ro section .security_id
+                                        };
+
+define block CALL_TBL with fixed order  {
+                                            ro section .callt0
+                                        };
+
+define block FIXED_NCODE with size = 0x1000, fixed order    {
+                                                                ro code section HSTNCODE,
+                                                                ro code section RBLNCODE,
+                                                                ro section .switch
+                                                            };
+
+define block FIXED_NEAR_ROM with size = 0x2F00, fixed order {
+                                                                ro section UARTCODE object uart.o,
+                                                                ro section CNT_BASE object clk_loop.o,
+                                                                ro section CNT_BASE object ke_mem.o,
+                                                                ro section CNT_BASE object rwble.o,
+                                                                ro section CNT_BASE object ke_msg.o,
+                                                                ro section CNT_BASE object co_endian.o,
+                                                                ro section CNT_BASE object co_buf.o,
+                                                                ro section CNT_BASE object co_utils.o,
+                                                                ro section HST_BASE object gap.o,
+                                                                ro section HST_BASE object gatt.o,
+                                                                ro section HST_BASE object attm_util.o,
+                                                                ro section HST_BASE object gap_util.o,
+                                                                ro section RBL_BASE object rble_osinterface_rw.o,
+                                                                ro section FDL_CODE object fdl,
+                                                                ro section FDL_CODE object fdl_data,
+                                                                ro section FDL_CODE object fdl_functions,
+                                                                ro section FDL_CNST object fdl_descriptor_t02.o,
+                                                                ro section EEL_CODE object eel,
+                                                                ro section EEL_CODE object eel_get_space,
+                                                                ro section EEL_CODE object eel_functions,
+                                                                ro section EEL_CODE object eel_data,
+                                                                ro section EEL_CODE object eel_common,
+                                                                ro section EEL_CODE object eel_bios,
+                                                                ro section EEL_CODE object eel_startup,
+                                                                ro section EEL_CODE object eel_write,
+                                                                ro section EEL_CODE object eel_read,
+                                                                ro section EEL_CODE object eel_refresh,
+                                                                ro section EEL_CODE object eel_verify,
+                                                                ro section EEL_CODE object eel_format,
+                                                                ro section EEL_CODE object eel_shutdown,
+                                                                ro section EEL_CNST object eel_descriptor_t02.o,
+                                                                ro section DFL_CODE object dataflash.o,
+                                                                ro section DFL_CNST object dataflash.o,
+                                                                ro section FSL_BCD  object fsl_b_common,
+                                                                ro section FSL_BECD object fsl_be_common,
+                                                                ro section FSL_FCD  object fsl_f_init,
+                                                                ro section FSL_FCD  object fsl_f_pfunc,
+                                                                ro section FSL_FCD  object fsl_f_pefunc,
+                                                                ro section FSL_FCD  object fsl_f_close,
+                                                                ro section FSL_FCD  object fsl_f_open,
+                                                                ro section FSL_RCD  object fsl_r_br_becd,
+                                                                ro section FSL_RCD  object fsl_r_ss_ibf,
+                                                                ro section FSL_RCD  object fsl_r_check_flow,
+                                                                ro section FSL_RCD  object fsl_r_std_cmd,
+                                                                ro section FSL_RCD  object fsl_r_reset,
+                                                                ro section CFL_CODE object codeflash.o,
+                                                            };
+
+define block FIXED_FAR_ROM with size = 0x1A000, fixed order {
+                                                                ro section MAINCODE object main.o,
+                                                                ro section MAINCODE object fwupr.o,
+                                                                ro section MAINCODE object rble_fw_up_receiver_app.o,
+                                                                ro section CNT_CODE object adaptable.o,
+                                                                ro section CNT_CODE object bfa.o,
+                                                                ro section CNT_CODE object clk_loop.o,
+                                                                ro section CNT_CODE object co_bt.o,
+                                                                ro section CNT_CODE object co_buf.o,
+                                                                ro section CNT_CODE object co_list.o,
+                                                                ro section CNT_CODE object co_math.o,
+                                                                ro section CNT_CODE object co_utils.o,
+                                                                ro section CNT_CODE object dbg.o,
+                                                                ro section CNT_CODE object dbg_task.o,
+                                                                ro section CNT_CODE object ke_event.o,
+                                                                ro section CNT_CODE object ke_mem.o,
+                                                                ro section CNT_CODE object ke_msg.o,
+                                                                ro section CNT_CODE object ke_queue.o,
+                                                                ro section CNT_CODE object ke_task.o,
+                                                                ro section CNT_CODE object ke_timer.o,
+                                                                ro section CNT_CODE object llc.o,
+                                                                ro section CNT_CODE object llc_cntl.o,
+                                                                ro section CNT_CODE object llc_data.o,
+                                                                ro section CNT_CODE object llc_task.o,
+                                                                ro section CNT_CODE object llc_util.o,
+                                                                ro section CNT_CODE object lld.o,
+                                                                ro section CNT_CODE object lld_data.o,
+                                                                ro section CNT_CODE object lld_evt.o,
+                                                                ro section CNT_CODE object lld_sleep.o,
+                                                                ro section CNT_CODE object llm.o,
+                                                                ro section CNT_CODE object llm_task.o,
+                                                                ro section CNT_CODE object llm_util.o,
+                                                                ro section CNT_CODE object peak.o,
+                                                                ro section CNT_CODE object reg_ble_em_cs.o,
+                                                                ro section CNT_CODE object reg_ble_em_et.o,
+                                                                ro section CNT_CODE object reg_ble_em_rx.o,
+                                                                ro section CNT_CODE object reg_ble_em_tx.o,
+                                                                ro section CNT_CODE object reg_ble_em_txe.o,
+                                                                ro section CNT_CODE object reg_blecore.o,
+                                                                ro section CNT_CODE object rseed.o,
+                                                                ro section CNT_CODE object rwble.o,
+                                                                ro section CNT_CODE object rwble_mem_cont.o,
+                                                                ro section HST_CODE object attc.o,
+                                                                ro section HST_CODE object attc_task.o,
+                                                                ro section HST_CODE object attc_util.o,
+                                                                ro section HST_CODE object attm.o,
+                                                                ro section HST_CODE object attm_task.o,
+                                                                ro section HST_CODE object attm_util.o,
+                                                                ro section HST_CODE object atts.o,
+                                                                ro section HST_CODE object atts_task.o,
+                                                                ro section HST_CODE object atts_util.o,
+                                                                ro section HST_CODE object gap.o,
+                                                                ro section HST_CODE object gap_task.o,
+                                                                ro section HST_CODE object gap_util.o,
+                                                                ro section HST_CODE object gatt.o,
+                                                                ro section HST_CODE object gatt_task.o,
+                                                                ro section HST_CODE object gatt_util.o,
+                                                                ro section HST_CODE object l2cc.o,
+                                                                ro section HST_CODE object l2cc_task.o,
+                                                                ro section HST_CODE object l2cc_util.o,
+                                                                ro section HST_CODE object l2cm.o,
+                                                                ro section HST_CODE object l2cm_task.o,
+                                                                ro section HST_CODE object l2cm_util.o,
+                                                                ro section HST_CODE object smpc.o,
+                                                                ro section HST_CODE object smpc_task.o,
+                                                                ro section HST_CODE object smpc_util.o,
+                                                                ro section HST_CODE object smpm.o,
+                                                                ro section HST_CODE object smpm_task.o,
+                                                                ro section HST_CODE object svc.o,
+                                                                ro section HST_CODE object svc_task.o,
+                                                                ro section RBL_CODE object rble_core.o,
+                                                                ro section RBL_CODE object rble_modem.o,
+                                                                ro section RBL_CODE object rble_osinterface_rw.o,
+                                                                ro section RBL_CODE object rble_api_modem_gap.o,
+                                                                ro section RBL_CODE object rble_api_modem_gatt.o,
+                                                                ro section RBL_CODE object rble_api_modem_sm.o,
+                                                                ro section RBL_CODE object rble_api_modem_vs.o,
+                                                                ro section RBL_CODE object rscip.o,
+                                                                ro section RBL_CODE object rscip_cntl.o,
+                                                                ro section RBL_CODE object rscip_uart.o,
+                                                                ro section PLF_CODE object plf.o
+                                                            };
+
+define block FIXED_DATA with size = 0x9F0,  fixed order     {
+                                                                rw data section CNT_DATA,
+                                                                rw data section MAINDATA,
+                                                                rw data section HDB_DATA,
+                                                                rw data section HST_DATA,
+                                                                rw data section RBL_DATA,
+                                                                rw data section CFL_DATA,
+                                                                rw data section SAM_DATA,
+                                                                rw data section DFL_DATA,
+                                                                rw data section UARTDATA
+                                                            };
+
+
+define block ACCESS_TABLE with size = 0x50    { ro section ACS_TBL };
+define block CLOCK_TABLE  with size = 0x30    { ro section CLK_TBL };
+define block TASK_DESC    with size = 0x380   { ro section TSK_DESC };
+
+define block DLIB_SLIB_far with size = 0x2000 { ro section .textf };
+
+
+/*
+ ***************************************************************************************************
+ * SECTION PLACEMENT
+ ***************************************************************************************************
+ */
+
+place at address mem:0x00000       { ro section .intvec };
+place at address mem:0x000C0       { block OPT_BYTE };
+place at address mem:0x000C4       { block SECUR_ID };
+
+"CALLT":            place in CALLT          { block CALL_TBL };
+
+"DLIB_SLIB":        place at address mem:0x000D8       {
+                                                            ro section .text
+                                                       };
+
+"FW_COUNTER0":      place at address mem:0x00FFE       { ro section MAIN_CN0 };
+"FW_COUNTER1":      place at address mem:0x01FFE       { ro section MAIN_CN1 };
+"FIXED_NCODE":      place at address mem:0x02000       { block FIXED_NCODE };
+
+"MIRROR_ROM":       place at address mem:_NEAR_CONST_LOCATION_START             { block MIRROR_ROM_BLE_STACK, block MIRROR_ROM_APP };
+"MIRROR_RAM":       place at address mem:(_NEAR_CONST_LOCATION_START | 0xF0000) { block MIRROR_RAM_BLE_STACK, block MIRROR_RAM_APP };
+
+"ACCESS_TABLE":     place at address mem:0x0A800       { block ACCESS_TABLE };
+"CLOCK_TABLE":      place at address mem:0x0A850       { block CLOCK_TABLE };
+"TASK_DESC":        place at address mem:0x0A880       { block TASK_DESC };
+"APP_NEAR_ROM":     place at address mem:0x0B000       {
+                                                            ro section .text object led.o,
+                                                            ro section .text object push_sw.o,
+                                                            ro section UARTBASE object uart.o,
+                                                            ro section .switchf,
+                                                       };
+"FIXED_NEAR_ROM":   place at address mem:0x0D000       { block FIXED_NEAR_ROM };
+
+"FIXED_FAR_ROM":    place at address mem:0x10000       { block FIXED_FAR_ROM };
+
+"DLIB_SLIB_FAR":    place at address mem:0x2A000       { block DLIB_SLIB_far };
+
+"ROMFAR":           place in ROM_far    {
+                                            block INIT_ARRAY,
+                                            ro section .text_unit64kp,
+                                            ro section .constf,
+                                            ro section .textf_unit64kp,
+                                            ro
+                                        };
+
+"FIXED_DATA":       place at address mem:0xFB310       { block FIXED_DATA };
+
+"RAMNEAR":          place in RAM_near       {
+                                                block NEAR_HEAP,
+                                                block CSTACK,
+                                                zi section .iar.dynexit,
+                                                rw section .data,
+                                                rw section .bss*,
+                                                rw
+                                            };
+
+"RAMFAR":           place in RAM_far        {
+                                                block FAR_HEAP,
+                                                rw section .dataf,
+                                                rw section .data_unit64kp,
+                                                rw section .bss_unit64kp,
+                                                rw section .bssf*
+                                            };
+
+"RAMHUGE":          place in RAM_huge       {
+                                                block HUGE_HEAP,
+                                                rw section .hdata,
+                                                rw section .hbss*
+                                            };
+
+"SADDRMEM":         place in SADDR          {
+                                                rw section .sdata,
+                                                rw section .sbss*,
+                                                rw section FDL_SDAT,
+                                                rw section EEL_SDAT,
+                                                rw section .wrkseg
+                                            };
+

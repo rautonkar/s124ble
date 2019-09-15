@@ -1,0 +1,179 @@
+//-------------------------------------------------------------------------
+//      ILINK command file template for RL78 microcontroller R5F11AGJ.
+//
+//      This file can be used to link object files from the RL78
+//      Assembler, IASMRL78, and the C/C++ compiler ICCRL78.
+//
+//          This file is generated from the device file:
+//          DR5F11AGJ.DVF
+//          Copyright(C) 2015 Renesas
+//
+//          Core type: s2
+//
+//          Format version 3.00, File version 1.10 
+//-------------------------------------------------------------------------
+
+initialize by copy with simple ranges, packing = auto { rw };
+initialize manually { ro section MAINCNST, 
+                      ro section CNT_CNST, 
+                      ro section HST_CNST, 
+                      ro section RBL_CNST, 
+                      ro section HDB_CNST, 
+                      ro section ACS_TBL, 
+                      ro section CLK_TBL, 
+                      ro section TSK_DESC, 
+                      ro section .const, 
+                      ro section .switch };
+do not initialize   { section *.noinit };
+
+define memory mem with size = 1M;
+
+
+// Set the symbol __RESERVE_OCD_ROM to 1 to reserve the OCD area for debugging.
+// IDE: Symbol can be defined within the project settings here:
+//      "Project"-->"Options..."->"Linker"-->"Config"-->"Configuration file symbol definitions"
+//      Symbol definition: __RESERVE_OCD_ROM=1
+// Command line: --config_def __RESERVE_OCD_ROM=1
+
+if (isdefinedsymbol(__RESERVE_OCD_ROM))
+{
+  if (__RESERVE_OCD_ROM == 1)
+  {
+    define region OCD_ROM_AREA = mem:[from 0x3FE00 size 0x0200];
+  }
+  else
+  {
+    define region OCD_ROM_AREA = mem:[from 0x0 size 0];
+  }
+}
+else
+{
+  define region OCD_ROM_AREA = mem:[from 0x0 size 0];
+}
+
+define region OCD_TRACE_RAM = mem:[from 0x0 size 0];
+
+define region HOTPLUGIN_RAM = mem:[from 0x0 size 0];
+
+define region EXLUDE_ROM_REGION = OCD_ROM_AREA;
+define region EXLUDE_RAM_REGION = HOTPLUGIN_RAM | OCD_TRACE_RAM;
+
+define region ROM_near1= mem:[from 0x000D8 to 0x02FFF] - EXLUDE_ROM_REGION;
+define region ROM_near2= mem:[from 0x03000 to 0x0FFFF] - EXLUDE_ROM_REGION;
+define region ROM_far  = mem:[from 0x000D8 to 0x3F7FF] - EXLUDE_ROM_REGION;
+define region ROM_huge = mem:[from 0x000D8 to 0x3F7FF] - EXLUDE_ROM_REGION;
+define region SADDR    = mem:[from 0xFFE20 to 0xFFEDF] - EXLUDE_RAM_REGION;
+define region RAM_near = mem:[from 0xFB310 to 0xFFE1F] - EXLUDE_RAM_REGION;
+define region RAM_far  = mem:[from 0xFB310 to 0xFFE1F] - EXLUDE_RAM_REGION;
+define region RAM_huge = mem:[from 0xFB310 to 0xFFE1F] - EXLUDE_RAM_REGION;
+define region VECTOR   = mem:[from 0x00000 to 0x0007F];
+define region CALLT    = mem:[from 0x00080 to 0x000BF];
+define region EEPROM   = mem:[from 0xF1000 to 0xF2FFF];
+
+define block NEAR_HEAP  with alignment = 2, size = _NEAR_HEAP_SIZE {  };
+define block FAR_HEAP   with alignment = 2, size = _FAR_HEAP_SIZE {  };
+define block HUGE_HEAP  with alignment = 2, size = _HUGE_HEAP_SIZE {  };
+define block CSTACK     with alignment = 2, size = _STACK_SIZE { rw section CSTACK };
+define block INIT_ARRAY with alignment = 2, fixed order { ro section .preinit_array,
+                                                          ro section .init_array };
+define block MIRROR_ROM with maximum size = _NEAR_CONST_LOCATION_SIZE
+                                                                { ro section MAINCNST_init,
+                                                                  ro section CNT_CNST_init,
+                                                                  ro section HST_CNST_init,
+                                                                  ro section RBL_CNST_init,
+                                                                  ro section HDB_CNST_init,
+                                                                  ro section ACS_TBL_init,
+                                                                  ro section CLK_TBL_init,
+                                                                  ro section TSK_DESC_init,
+                                                                  ro section .const_init,
+                                                                  ro section .switch_init };
+
+define block MIRROR_RAM with maximum size = _NEAR_CONST_LOCATION_SIZE
+                                                                { rw section MAINCNST,
+                                                                  rw section CNT_CNST,
+                                                                  rw section HST_CNST,
+                                                                  rw section RBL_CNST,
+                                                                  rw section HDB_CNST,
+                                                                  rw section ACS_TBL,
+                                                                  rw section CLK_TBL,
+                                                                  rw section TSK_DESC,
+                                                                  rw section .const,
+                                                                  rw section .switch };
+
+define block OPT_BYTE with size = 4  { ro section .option_byte };
+define block SECUR_ID with size = 10 { ro section .security_id };
+
+place at address mem:0x00000       { ro section .intvec };
+place at address mem:0x000C0       { block OPT_BYTE };
+place at address mem:0x000C4       { block SECUR_ID };
+place at address mem:_NEAR_CONST_LOCATION_START             { block MIRROR_ROM };
+place at address mem:(_NEAR_CONST_LOCATION_START | 0xF0000) { block MIRROR_RAM };
+
+
+"CALLT":place in CALLT             { ro section .callt0 };
+
+"ROMNEAR1":place in ROM_near1      { first block ROM_near1_first with fixed order
+                                        { ro code section PLF_CODE,
+                                          ro code section FDL_CODE,
+                                          ro code section EEL_CODE,
+                                          ro code section DFL_CODE,
+                                          ro code section FSL_BCD,
+                                          ro code section FSL_BECD,
+                                          ro code section FSL_FCD,
+                                          ro code section FSL_RCD,
+                                          ro code section CFL_CODE,
+                                          ro section FDL_CNST,
+                                          ro section EEL_CNST,
+                                          ro section DFL_CNST }
+                                   };
+
+"ROMNEAR2":place in ROM_near2      { first block ROM_near2_first with fixed order
+                                        { ro code section HSTNCODE,
+                                          ro code section RBLNCODE,
+                                          ro code section CNT_BASE,
+                                          ro code section HST_BASE,
+                                          ro code section RBL_BASE,
+                                          ro code section UARTBASE },
+                                     ro section .text };
+
+"ROMFAR":place in ROM_far          { first block ROM_far_first with fixed order
+                                        { ro code section HST_CODE,
+                                          ro code section CNT_CODE,
+                                          ro code section RBL_CODE,
+                                          ro code section UARTCODE,
+                                          ro section MAINCODE },
+                                     ro code section APP_CODE,
+                                     ro code section PRF_CODE,
+                                     block INIT_ARRAY,
+                                     ro section .text_unit64kp,
+                                     ro section .constf,
+                                     ro section .switchf,
+                                     ro section .textf_unit64kp,
+                                     ro };
+
+"ROMHUGE":place in ROM_huge        { ro section .consth,
+                                     ro section .textf };
+
+"RAMNEAR":place in RAM_near        { block NEAR_HEAP,
+                                     block CSTACK,
+                                     zi section .iar.dynexit,
+                                     rw section .data,
+                                     rw section .bss*,
+                                     rw };
+
+"RAMFAR":place in RAM_far          { block FAR_HEAP,
+                                     rw section .dataf,
+                                     rw section .data_unit64kp,
+                                     rw section .bss_unit64kp,
+                                     rw section .bssf* };
+
+"RAMHUGE":place in RAM_huge        { block HUGE_HEAP,
+                                     rw section .hdata,
+                                     rw section .hbss* };
+
+"SADDRMEM":place in SADDR          { rw section .sdata,
+                                     rw section .sbss*,
+                                     rw section FDL_SDAT,
+                                     rw section EEL_SDAT,
+                                     rw section .wrkseg };
+
