@@ -1,0 +1,268 @@
+"Name","Pin","Function","Symbolic Name","Drive Capacity","IRQ","Mode","Output type","Pull up","Port Capabilities","Comment"
+"AVCC0","56","ADC_AVCC0","","","","","","","",""
+"AVSS0","57","ADC_AVSS0","","","","","","","",""
+"P000","64","ADC0_AN00","AN000","","","Analog mode","","","ADC0: AN00
+CTSU0: TS21
+IRQ0: IRQ6","Light Sensor"
+"P001","63","ADC0_AN01","AN001","","","Analog mode","","","ADC0: AN01
+CTSU0: TS22
+IRQ0: IRQ7","Temp. Sensor"
+"P002","62","GPIO","RSDEN","Low","None","Output mode (Initial Low)","","None","ADC0: AN02
+CTSU0: TS23
+IRQ0: IRQ2","Serial Comm Control"
+"P003","61","GPIO","RSON","Low","","Output mode (Initial Low)","","None","ADC0: AN03
+CTSU0: TS24","Serial Comm Control"
+"P004","60","GPIO","IRQ3_SW2","","IRQ3","Input mode","","None","ADC0: AN04
+CTSU0: TS25
+IRQ0: IRQ3","Button S2 Interrupt Input"
+"P010","59","CTSU0_TS30","CTSU_TS30","Low","","Peripheral mode","","None","ADC: VREFH0
+ADC0: AN05
+CTSU0: TS30","Captouch pin"
+"P011","58","CTSU0_TS31","CTSU_TS31","Low","","Peripheral mode","","None","ADC: VREFL0
+ADC0: AN06
+CTSU0: TS31","Captouch pin"
+"P012","55","ADC0_AN07","AN007","","","Analog mode","","","ADC0: AN07","Potentiometer"
+"P013","54","ADC0_AN08","AN008","","","Analog mode","","","ADC0: AN08","Microphone"
+"P014","53","DAC0_DA","DAC","","","Analog mode","","","ADC0: AN09
+DAC120: DA","Headphone jack"
+"P015","52","CTSU0_TS28","CTSU_TS28","Low","None","Peripheral mode","","None","ADC0: AN10
+CTSU0: TS28
+IRQ0: IRQ7","Captouch pin"
+"P100","48","SPI0_MISO","RSPI0_MISOA","Medium","None","Peripheral mode","CMOS","None","ADC0: AN22
+AGT0: AGTIO
+CMP0: CMPIN0
+CTSU0: TS26
+GPT5: GTIOCB
+IIC1: SCL
+IRQ0: IRQ2
+KINT0: KRM0
+POEG0: GTETRG
+SCI0: RXD_MISO
+SCI0: SCL
+SCI1: SCK
+SPI0: MISO","SPI MISO BLE Serial Flash"
+"P101","47","SPI0_MOSI","RSPI0_MOSIA","Medium","None","Peripheral mode","CMOS","None","ADC0: AN21
+AGT0: AGTEE
+CMP0: CMPREF0
+CTSU0: TS16
+GPT5: GTIOCA
+IIC1: SDA
+IRQ0: IRQ1
+KINT0: KRM1
+POEG1: GTETRG
+SCI0: SDA
+SCI0: TXD_MOSI
+SCI1: CTS_RTS_SS
+SPI0: MOSI","SPI MOSI BLE Serial Flash"
+"P102","46","SPI0_RSPCK","RSPI0_RSPCKA","Medium","","Peripheral mode","","None","ADC0: ADTRG
+ADC0: AN20
+AGT0: AGTO
+CAN0: CRX
+CMP0: CMPIN1
+CTSU0: TS15
+GPT2: GTIOCB
+KINT0: KRM2
+OPS0: GTOWLO
+SCI0: SCK
+SPI0: RSPCK","SPI Clock Output BLE Serial Flash"
+"P103","45","SPI0_SSL0","RSPI0_SSLA0","Medium","","Peripheral mode","","None","ADC0: AN19
+CAN0: CTX
+CMP0: CMPREF1
+CTSU0: TS14
+GPT2: GTIOCA
+KINT0: KRM3
+OPS0: GTOWUP
+SCI0: CTS_RTS_SS
+SPI0: SSL0",""
+"P104","44","GPIO","IRQ1","","IRQ1","Input mode","","None","CTSU0: TS13
+IRQ0: IRQ1
+KINT0: KRM4
+POEG1: GTETRG
+SCI0: RXD_MISO
+SCI0: SCL
+SPI0: SSL1","Header Pin - Interrupt Input"
+"P105","43","SPI0_SSL2","RSPI0_SSLA2","Medium","None","Peripheral mode","","None","IRQ0: IRQ0
+KINT0: KRM5
+POEG0: GTETRG
+SPI0: SSL2",""
+"P106","42","SPI0_SSL3","RSPI0_SSLA3","Medium","","Peripheral mode","","None","GPT0: GTIOCB
+KINT0: KRM6
+SPI0: SSL3",""
+"P107","41","GPIO","LED_3","Low","","Output mode (Initial Low)","","None","GPT0: GTIOCA
+KINT0: KRM7",""
+"P108","33","DEBUG0_SWDIO","SWD_SWDIO","Low","","Peripheral mode","","None","DEBUG0: SWDIO
+GPT0: GTIOCB
+OPS0: GTOULO
+SCI9: CTS_RTS_SS
+SPI1: SSL0","Serial Wire Debug"
+"P109","34","CAN0_CTX","CAN0_CTX0","Low","","Peripheral mode","CMOS","None","CAN0: CTX
+CGC0: CLKOUT
+CTSU0: TS10
+GPT1: GTIOCA
+OPS0: GTOVUP
+SCI9: SDA
+SCI9: TXD_MOSI
+SPI1: MOSI","CAN Transmit"
+"P110","35","CAN0_CRX","CAN0_CRX0","Low","None","Peripheral mode","CMOS","None","CAN0: CRX
+CMP0: VCOUT
+CTSU0: TS11
+GPT1: GTIOCB
+IRQ0: IRQ3
+OPS0: GTOVLO
+SCI0: CTS_RTS_SS
+SCI9: RXD_MISO
+SCI9: SCL
+SPI1: MISO","CAN Receive"
+"P111","36","GPIO","GPIO_P111","","None","Input mode","","None","CTSU0: TS12
+GPT3: GTIOCA
+IRQ0: IRQ4
+SCI0: SCK
+SCI9: SCK
+SPI1: RSPCK","Header Pin - Input"
+"P112","37","CTSU0_TSCAP","CTSU_TSCAP","Low","","Peripheral mode","CMOS","None","CTSU0: TSCAP
+GPT3: GTIOCB
+SCI0: SDA
+SCI0: TXD_MOSI","Captouch pin"
+"P113","38","GPIO","BLE_RST","Low","","Output mode (Initial Low)","","None","","BLE Reset"
+"P200","27","GPIO","GPIO_P200","","None","Input mode","","","IRQ0: NMI","Header Pin - Input"
+"P201","26","","BOOT_SELECT","","","Disabled","","","",""
+"P204","24","SCI9_SCK","SCK9","Low","","Peripheral mode","CMOS","None","AGT1: AGTIO
+CAC0: CACREF
+CTSU0: TS00
+GPT4: GTIOCB
+IIC0: SCL
+OPS0: GTIW
+SCI0: SCK
+SCI9: SCK
+SPI1: RSPCK","SCI9 SPI SCK"
+"P205","23","SCI9_CTS_RTS_SS","CTS9","Low","None","Peripheral mode","CMOS","None","AGT1: AGTO
+CGC0: CLKOUT
+CTSU0: TSCAP
+GPT4: GTIOCA
+IIC1: SCL
+IRQ0: IRQ1
+OPS0: GTIV
+SCI0: SDA
+SCI0: TXD_MOSI
+SCI9: CTS_RTS_SS
+SPI1: SSL0","SCI9 SPI CTS"
+"P206","22","GPIO","IRQ0_SW1","","IRQ0","Input mode","","None","CTSU0: TS01
+IIC1: SDA
+IRQ0: IRQ0
+OPS0: GTIU
+SCI0: RXD_MISO
+SCI0: SCL
+SPI1: SSL1","Button S1 - Interrupt Input"
+"P212","10","CGC0_EXTAL","EXTAL","","None","Peripheral mode","CMOS","None","AGT1: AGTEE
+CGC0: EXTAL
+IRQ0: IRQ3
+POEG1: GTETRG
+SCI1: RXD_MISO
+SCI1: SCL","Main Crystal"
+"P213","9","CGC0_XTAL","XTAL","","None","Peripheral mode","CMOS","None","CGC0: XTAL
+IRQ0: IRQ2
+POEG0: GTETRG
+SCI1: SDA
+SCI1: TXD_MOSI","Main Crystal"
+"P214","7","CGC0_XCOUT","RTC_XOUT","","","Peripheral mode","","","CGC0: XCOUT","RTC Crystal"
+"P215","6","CGC0_XCIN","RTC_XCIN","","","Peripheral mode","","","CGC0: XCIN","RTC Crystal"
+"P300","32","DEBUG0_SWCLK","SWD_SWCLK","Low","","Peripheral mode","","None","DEBUG0: SWCLK
+GPT0: GTIOCA
+OPS0: GTOUUP
+SPI1: SSL1","Serial Wire Debug"
+"P301","31","CTSU0_TS09","CTSU_TS09","Low","None","Peripheral mode","","None","CTSU0: TS09
+GPT4: GTIOCB
+IRQ0: IRQ6
+OPS0: GTOULO
+SPI1: SSL2","Captouch pin"
+"P302","30","CTSU0_TS08","CTSU_TS08","Low","None","Peripheral mode","","None","CTSU0: TS08
+GPT4: GTIOCA
+IRQ0: IRQ5
+OPS0: GTOUUP
+SPI1: SSL3","Captouch pin"
+"P303","29","CTSU0_TS02","CTSU_TS02","Low","","Peripheral mode","","None","CTSU0: TS02
+GPT1: GTIOCB","Captouch pin "
+"P304","28","GPIO","GPIO_P304","Low","","Output mode (Initial Low)","","None","GPT1: GTIOCA","Header Pin - Output"
+"P400","1","IIC0_SCL","IIC0_SCL0","Low","None","Peripheral mode","CMOS","None","AGT1: AGTIO
+CAC0: CACREF
+CTSU0: TS20
+GPT6: GTIOCA
+IIC0: SCL
+IRQ0: IRQ0
+SCI0: SCK
+SCI1: SCK","I2C peripheral"
+"P401","2","IIC0_SDA","IIC0_SDA0","Low","None","Peripheral mode","CMOS","None","CAN0: CTX
+CTSU0: TS19
+GPT6: GTIOCB
+IIC0: SDA
+IRQ0: IRQ5
+POEG0: GTETRG
+SCI0: CTS_RTS_SS
+SCI1: SDA
+SCI1: TXD_MOSI","I2C peripheral"
+"P402","3","GPIO","IRQ4_BLE","","IRQ4","Input mode","","None","CAN0: CRX
+CTSU0: TS18
+IRQ0: IRQ4
+SCI1: RXD_MISO
+SCI1: SCL",""
+"P403","4","GPIO","GPIO_P403","Low","","Output mode (Initial Low)","","None","CTSU0: TS17
+GPT3: GTIOCA
+SCI1: CTS_RTS_SS","Header Pin - Output"
+"P407","16","USBFS0_VBUS","USBFS_USB_VBUS","Low","","Peripheral mode","CMOS","None","ADC0: ADTRG
+CTSU0: TS03
+IIC0: SDA
+RTC0: RTCOUT
+SCI0: CTS_RTS_SS
+SPI1: SSL3
+USBFS0: VBUS",""
+"P408","15","SCI9_RXD_MISO","MISO9","Low","None","Peripheral mode","CMOS","None","CTSU0: TS04
+GPT5: GTIOCB
+IRQ0: IRQ7
+OPS0: GTOWLO
+SCI9: RXD_MISO
+SCI9: SCL","SCI9 SPI MISO"
+"P409","14","SCI9_TXD_MOSI","MOSI9","Low","None","Peripheral mode","CMOS","None","CTSU0: TS05
+GPT5: GTIOCA
+IRQ0: IRQ6
+OPS0: GTOWUP
+SCI9: SDA
+SCI9: TXD_MOSI","SCI9 SPI MOSI"
+"P410","13","SCI0_RXD_MISO","RXD0","Low","None","Peripheral mode","CMOS","None","AGT1: AGTOB
+CTSU0: TS06
+GPT6: GTIOCB
+IRQ0: IRQ5
+OPS0: GTOVLO
+SCI0: RXD_MISO
+SCI0: SCL
+SPI0: MISO","SCI0 Receive"
+"P411","12","SCI0_TXD_MOSI","TXD0","Low","None","Peripheral mode","CMOS","None","AGT1: AGTOA
+CTSU0: TS07
+GPT6: GTIOCA
+IRQ0: IRQ4
+OPS0: GTOVUP
+SCI0: SDA
+SCI0: TXD_MOSI
+SPI0: MOSI","SCI0 Transmit"
+"P500","49","CTSU0_TS27","CTSU_TS27","Low","","Peripheral mode","","None","ADC0: AN16
+AGT0: AGTOA
+CTSU0: TS27
+GPT2: GTIOCA
+OPS0: GTIU","Captouch pin"
+"P501","50","GPIO","LED_1","Low","","Output mode (Initial Low)","","None","ADC0: AN17
+AGT0: AGTOB
+GPT2: GTIOCB
+OPS0: GTIV",""
+"P502","51","GPIO","LED_2","Low","","Output mode (Initial Low)","","None","ADC0: AN18
+GPT3: GTIOCB
+OPS0: GTIW",""
+"RES","25","","","","","","","","",""
+"USBDM","18","USBFS0_USBDM","","","","","","","",""
+"USBDP","19","USBFS0_USBDP","","","","","","","",""
+"VCC","11","","","","","","","","",""
+"VCC","39","","","","","","","","",""
+"VCCUSB","20","USBFS0_VCCUSB","","","","","","","",""
+"VCCUSBLDO","21","USBFS0_VCCUSBLDO","","","","","","","",""
+"VCL","5","","","","","","","","",""
+"VSS","8","","","","","","","","",""
+"VSS","40","","","","","","","","",""
+"VSSUSB","17","USBFS0_VSSUSB","","","","","","","",""
