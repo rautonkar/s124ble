@@ -204,7 +204,7 @@ void rBLE_Exit( void )
 RBLE_STATUS rBLE_Run(void)
 {
 	RSCIP_RESULT_CODE	rscip_ret;
-	RBLE_STATUS 		ret;
+	RBLE_STATUS 		ret = RBLE_OK;
 	RBLE_HEADER_t   	*header_pnt;
 	int_t				cmd_buff_rd_cnt_tmp;
 

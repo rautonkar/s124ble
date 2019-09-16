@@ -145,7 +145,7 @@
   <v1:configSetting configurationId="ctsu0.ts09" altId="ctsu0.ts09.p301">
     <v1:connectionSetting altId="p301.ctsu0.ts09"/>
   </v1:configSetting>
-  <v1:configSetting configurationId="p111.gpio_mode" altId="p111.gpio_mode.gpio_mode_in"/>
+  <v1:configSetting configurationId="p111.gpio_mode" altId="p111.gpio_mode.gpio_mode_out.high"/>
   <v1:configSetting configurationId="p200" altId="p200.input"/>
   <v1:configSetting configurationId="spi0.mosi" altId="spi0.mosi.p101">
     <v1:connectionSetting altId="p101.spi0.mosi"/>
@@ -182,7 +182,7 @@
   <v1:configSetting configurationId="p112" altId="p112.ctsu0.tscap">
     <v1:connectionSetting altId="ctsu0.tscap.p112"/>
   </v1:configSetting>
-  <v1:configSetting configurationId="p111" altId="p111.input"/>
+  <v1:configSetting configurationId="p111" altId="p111.output.high"/>
   <v1:configSetting configurationId="p110" altId="p110.can0.crx">
     <v1:connectionSetting altId="can0.crx.p110"/>
   </v1:configSetting>

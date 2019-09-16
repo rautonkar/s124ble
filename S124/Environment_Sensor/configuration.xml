@@ -160,8 +160,8 @@
     </module>
     <module id="module.driver.uart_on_sci_uart.1617223960">
       <property id="module.driver.uart.name" value="g_uart_ble"/>
-      <property id="module.driver.uart.channel" value="0"/>
-      <property id="module.driver.uart.baud_rate" value="9600"/>
+      <property id="module.driver.uart.channel" value="9"/>
+      <property id="module.driver.uart.baud_rate" value="4800"/>
       <property id="module.driver.uart.data_bits" value="module.driver.uart.data_bits.data_bits_8"/>
       <property id="module.driver.uart.parity" value="module.driver.uart.parity.parity_off"/>
       <property id="module.driver.uart.stop_bits" value="module.driver.uart.stop_bits.stop_bits_1"/>

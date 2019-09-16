@@ -1,0 +1,65 @@
+----------------------------------------------------------------------------------
+[0] Tx ----> Sun Sep 15 23:04:05.841
+RBLE_GAP_Reset
+----------------------------------------------------------------------------------
+[1] Rx <---- Sun Sep 15 23:04:05.949
+RBLE_GAP_EVENT_RESET_RESULT
+ Status = OK
+ Major Version = 01
+ Minor Version = 21
+----------------------------------------------------------------------------------
+[2] Tx ----> Sun Sep 15 23:04:10.915
+RBLE_GAP_Get_Device_Info
+----------------------------------------------------------------------------------
+[3] Rx <---- Sun Sep 15 23:04:11.58
+RBLE_GAP_EVENT_GET_DEVICE_INFO_COMP
+ Status = OK
+ BD_ADDR  = 12:34:56:78:9A:BC
+ HCI Ver  = 0x08 (v4.2)
+ LMP Ver  = 0x08 (v4.2)
+ Host Ver = 0x08 (v4.2)
+ HCI SubVer  = 0x0005
+ LMP SubVer  = 0x0005
+ Host SubVer = 0x0005
+ Company Id  = 0x0036 (Renesas Electronics Corporation)
+----------------------------------------------------------------------------------
+[4] Tx ----> Sun Sep 15 23:04:16.952
+RBLE_GAP_Broadcast_Enable
+ Discoverable Mode = General Discoverable, 
+ Connectable Mode  = Undirected Connectable
+ Adv Interval Min = 256 (160.000 msec)
+ Adv Interval Max = 256 (160.000 msec)
+ Adv Type = ADV_IND
+ Own Address Type = Public Address
+ Direct Address Type = Public Address
+ Direct Address = 00:00:00:00:00:00
+ Adv Channel Map = Enable All Channels(37ch, 38ch, 39ch)
+ Adv Filter Policy = Allow SCAN_REQ from Any, CONNECT_REQ from Any
+ Adv Data Length = 3
+ Advertising Data =
+    02 01 06 
+ Scan Resp Length = 0
+ ScanResponse Data =
+----------------------------------------------------------------------------------
+[5] Rx <---- Sun Sep 15 23:04:17.292
+RBLE_GAP_EVENT_BROADCAST_ENABLE_COMP
+ Status = OK
+----------------------------------------------------------------------------------
+[6] Rx <---- Sun Sep 15 23:04:33.920
+RBLE_GAP_EVENT_CONNECTION_COMP
+ Status = OK
+ Role = Slave
+ ConnectionHandle = 0x0000
+ AddressType = Random Address
+ BD_ADDR = 6C:B6:C0:72:67:F9
+ Connection Index = 0x00
+ Connection Interval = 0x0018 (30.00 msec)
+ Connection Latency  = 0 events
+ Supervision Timeout = 0x0048 (720 msec)
+ Clock Accuracy      = 250ppm
+----------------------------------------------------------------------------------
+[7] Rx <---- Sun Sep 15 23:04:54.465
+RBLE_GAP_EVENT_DISCONNECT_COMP
+ Reason = REMOTE_USER_TERM_CON
+ Status = OK
+ ConnectionHandle = 0x0000

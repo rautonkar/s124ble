@@ -113,7 +113,7 @@ SCI0: CTS_RTS_SS
 SCI9: RXD_MISO
 SCI9: SCL
 SPI1: MISO","CAN Receive"
-"P111","36","GPIO","GPIO_P111","","None","Input mode","","None","CTSU0: TS12
+"P111","36","GPIO","GPIO_P111","Low","None","Output mode (Initial High)","","None","CTSU0: TS12
 GPT3: GTIOCA
 IRQ0: IRQ4
 SCI0: SCK
