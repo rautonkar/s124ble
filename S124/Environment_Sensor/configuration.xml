@@ -125,6 +125,10 @@
       <description>SCI UART: Provides=[UART] , Requires=[SCI Common]</description>
       <originalPack>Renesas.Synergy.1.5.0.pack</originalPack>
     </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_sce" variant="" vendor="Renesas" version="1.5.0">
+      <description>Secure Cryptography Engine: Provides=[TRNG, AES, HASH, RSA, DSA, TDES, ARC4, ECC, KEY_INSTALLATION]</description>
+      <originalPack>Renesas.Synergy.1.5.0.pack</originalPack>
+    </component>
   </synergyComponentSelection>
   <synergyIcuConfiguration/>
   <synergyMessagingConfiguration/>
@@ -196,6 +200,57 @@
       <property id="module.driver.transfer.p_callback" value="NULL"/>
       <property id="module.driver.transfer.irq_ipl" value="board.icu.common.irq.disabled"/>
     </module>
+    <module id="module.driver.sce_trng.1379821615">
+      <property id="module.driver.sce_trng.name" value="g_sce_trng"/>
+      <property id="module.driver.sce_trng.nattempts" value="2"/>
+    </module>
+    <module id="module.driver.sce.1094495241">
+      <property id="module.driver.sce.name" value="g_sce"/>
+      <property id="module.driver.sce.endian_flag" value="module.driver.sce.endian_flag.big_endian"/>
+      <property id="module.driver.sce.intentional_blank_line_1" value=""/>
+      <property id="module.driver.sce.crypto_module_list" value=""/>
+      <property id="module.driver.sce.crypto_aes_plain_text_128_ecb" value="module.driver.sce.crypto_aes_plain_text_128_ecb.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_128_cbc" value="module.driver.sce.crypto_aes_plain_text_128_cbc.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_128_ctr" value="module.driver.sce.crypto_aes_plain_text_128_ctr.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_128_gcm" value="module.driver.sce.crypto_aes_plain_text_128_gcm.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_128_xts" value="module.driver.sce.crypto_aes_plain_text_128_xts.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_192_ecb" value="module.driver.sce.crypto_aes_plain_text_192_ecb.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_192_cbc" value="module.driver.sce.crypto_aes_plain_text_192_cbc.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_192_ctr" value="module.driver.sce.crypto_aes_plain_text_192_ctr.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_192_gcm" value="module.driver.sce.crypto_aes_plain_text_192_gcm.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_256_ecb" value="module.driver.sce.crypto_aes_plain_text_256_ecb.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_256_cbc" value="module.driver.sce.crypto_aes_plain_text_256_cbc.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_256_ctr" value="module.driver.sce.crypto_aes_plain_text_256_ctr.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_256_gcm" value="module.driver.sce.crypto_aes_plain_text_256_gcm.disable"/>
+      <property id="module.driver.sce.crypto_aes_plain_text_256_xts" value="module.driver.sce.crypto_aes_plain_text_256_xts.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_128_ecb" value="module.driver.sce.crypto_aes_wrapped_128_ecb.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_128_cbc" value="module.driver.sce.crypto_aes_wrapped_128_cbc.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_128_ctr" value="module.driver.sce.crypto_aes_wrapped_128_ctr.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_128_gcm" value="module.driver.sce.crypto_aes_wrapped_128_gcm.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_128_xts" value="module.driver.sce.crypto_aes_wrapped_128_xts.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_192_ecb" value="module.driver.sce.crypto_aes_wrapped_192_ecb.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_192_cbc" value="module.driver.sce.crypto_aes_wrapped_192_cbc.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_192_ctr" value="module.driver.sce.crypto_aes_wrapped_192_ctr.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_192_gcm" value="module.driver.sce.crypto_aes_wrapped_192_gcm.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_256_ecb" value="module.driver.sce.crypto_aes_wrapped_256_ecb.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_256_cbc" value="module.driver.sce.crypto_aes_wrapped_256_cbc.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_256_ctr" value="module.driver.sce.crypto_aes_wrapped_256_ctr.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_256_gcm" value="module.driver.sce.crypto_aes_wrapped_256_gcm.disable"/>
+      <property id="module.driver.sce.crypto_aes_wrapped_256_xts" value="module.driver.sce.crypto_aes_wrapped_256_xts.disable"/>
+      <property id="module.driver.sce.crypto_rsa_plain_text_1024" value="module.driver.sce.crypto_rsa_plain_text_1024.disable"/>
+      <property id="module.driver.sce.crypto_rsa_plain_text_2048" value="module.driver.sce.crypto_rsa_plain_text_2048.disable"/>
+      <property id="module.driver.sce.crypto_rsa_wrapped_1024" value="module.driver.sce.crypto_rsa_wrapped_1024.disable"/>
+      <property id="module.driver.sce.crypto_rsa_wrapped_2048" value="module.driver.sce.crypto_rsa_wrapped_2048.disable"/>
+      <property id="module.driver.sce.crypto_ecc_plain_text_192" value="module.driver.sce.crypto_ecc_plain_text_192.disable"/>
+      <property id="module.driver.sce.crypto_ecc_plain_text_256" value="module.driver.sce.crypto_ecc_plain_text_256.disable"/>
+      <property id="module.driver.sce.crypto_ecc_wrapped_192" value="module.driver.sce.crypto_ecc_wrapped_192.disable"/>
+      <property id="module.driver.sce.crypto_ecc_wrapped_256" value="module.driver.sce.crypto_ecc_wrapped_256.disable"/>
+      <property id="module.driver.sce.crypto_hash_sha1" value="module.driver.sce.crypto_hash_sha1.disable"/>
+      <property id="module.driver.sce.crypto_hash_sha224" value="module.driver.sce.crypto_hash_sha224.disable"/>
+      <property id="module.driver.sce.crypto_hash_sha256" value="module.driver.sce.crypto_hash_sha256.disable"/>
+      <property id="module.driver.sce.crypto_hash_md5" value="module.driver.sce.crypto_hash_md5.disable"/>
+      <property id="module.driver.sce.crypto_trng" value="module.driver.sce.crypto_trng.enable"/>
+    </module>
     <context id="_hal.0">
       <stack module="module.driver.cgc_on_cgc.0"/>
       <stack module="module.driver.fmi_on_fmi.0"/>
@@ -204,6 +259,9 @@
       <stack module="module.driver.timer_on_gpt.526358368"/>
       <stack module="module.driver.uart_on_sci_uart.1617223960">
         <stack module="module.driver.transfer_on_dtc.16821349" requires="module.driver.uart_on_sci_uart.requires.transfer_tx"/>
+      </stack>
+      <stack module="module.driver.sce_trng.1379821615">
+        <stack module="module.driver.sce.1094495241" requires="module.driver.sce"/>
       </stack>
     </context>
     <config id="config.driver.cgc">
@@ -215,6 +273,16 @@
       <property id="config.driver.cgc.subclock_at_reset_enable" value="config.driver.cgc.subclock_at_reset_enable.enabled"/>
       <property id="config.driver.cgc.low_voltage_mode" value="config.driver.cgc.low_voltage_mode.disabled"/>
     </config>
+    <config id="config.driver.sce"/>
+    <config id="config.driver.sce_trng"/>
+    <config id="config.driver.sce_aes"/>
+    <config id="config.driver.sce_hash"/>
+    <config id="config.driver.sce_rsa"/>
+    <config id="config.driver.sce_dsa"/>
+    <config id="config.driver.sce_arc4"/>
+    <config id="config.driver.sce_tdes"/>
+    <config id="config.driver.sce_ecc"/>
+    <config id="config.driver.sce_key_installation"/>
     <config id="config.driver.ioport">
       <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
     </config>

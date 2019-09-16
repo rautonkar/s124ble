@@ -33,6 +33,7 @@ Includes   <System Includes> , "Project Includes"
 #include    "rble_api.h"
 #include    "app.h"
 
+#include    "hal_data.h"
 #if defined DEBUG
 #include    "logger.h"
 #endif
@@ -71,7 +72,9 @@ Private global variables and functions
 /******************************************************************************************/
 static int_t APP_Get_Random( void )
 {
-    return( rand() );
+    uint32_t random32bit = 0;
+    g_sce_trng.p_api->read(g_sce_trng.p_ctrl, &random32bit, sizeof(random32bit)/sizeof(uint32_t));
+    return( (int_t) random32bit);
 }
 
 /**************************************************************************************/

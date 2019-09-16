@@ -16,6 +16,16 @@ void hal_entry(void)
 
     uart_instance_t const * const p_uart_ble = &g_uart_ble;
 
+    /** 0. Initialize random number generator */
+    {
+        ssp_err_t err = g_sce.p_api->open(g_sce.p_ctrl, g_sce.p_cfg);
+
+        if(SSP_SUCCESS == err)
+        {
+            err = g_sce_trng.p_api->open(g_sce_trng.p_ctrl, g_sce_trng.p_cfg);
+        }
+    }
+
     /** 1. Initialize the RBLE Modem on the PMOD Interface */
     {
         /* Reset the Modem */
@@ -51,4 +61,7 @@ void hal_entry(void)
         /** 5. Exchange information to the Modem over the UART */
         rble_status = rBLE_Run();
     }
+
+    g_sce_trng.p_api->close(g_sce_trng.p_ctrl);
+    g_sce.p_api->close(g_sce.p_ctrl);
 }
