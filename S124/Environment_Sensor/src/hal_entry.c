@@ -24,6 +24,9 @@ void hal_entry(void)
         {
             err = g_sce_trng.p_api->open(g_sce_trng.p_ctrl, g_sce_trng.p_cfg);
         }
+
+        /* Test if there is an error */
+
     }
 
     /** 1. Initialize the RBLE Modem on the PMOD Interface */
@@ -62,6 +65,25 @@ void hal_entry(void)
         rble_status = rBLE_Run();
     }
 
-    g_sce_trng.p_api->close(g_sce_trng.p_ctrl);
-    g_sce.p_api->close(g_sce.p_ctrl);
+    /** Close out the cryptographic services from hardware */
+    {
+        ssp_err_t err = SSP_SUCCESS;
+        err = g_sce_trng.p_api->close(g_sce_trng.p_ctrl);
+        err = g_sce.p_api->close(g_sce.p_ctrl);
+    }
+}
+
+void RBLE_Client_Connection(uint32_t status)
+{
+    bsp_leds_t leds_dks124;
+    ssp_err_t err = R_BSP_LedsGet(&leds_dks124);
+
+    if(status > 0)
+    {
+        g_ioport_on_ioport.pinWrite(leds_dks124.p_leds[BSP_LED_LED2], IOPORT_LEVEL_HIGH);
+    }
+    else
+    {
+        g_ioport_on_ioport.pinWrite(leds_dks124.p_leds[BSP_LED_LED2], IOPORT_LEVEL_LOW);
+    }
 }
