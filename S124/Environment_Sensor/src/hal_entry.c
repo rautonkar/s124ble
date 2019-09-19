@@ -5,6 +5,8 @@
 #define RL78G1D_RESET IOPORT_PORT_01_PIN_11
 #define RL78G1D_TOOL0 IOPORT_PORT_04_PIN_03
 
+void RBLE_Client_Connection(uint32_t status);
+
 void hal_entry(void)
 {
     RBLE_STATUS rble_status = RBLE_OK;
@@ -56,6 +58,15 @@ void hal_entry(void)
         ;
     }
 
+    {
+        /* Simple timer for demonstration */
+        ssp_err_t err = g_timer_itr.p_api->open(g_timer_itr.p_ctrl, g_timer_itr.p_cfg);
+
+        bsp_leds_t leds_dks124;
+        err = R_BSP_LedsGet(&leds_dks124);
+        g_ioport_on_ioport.pinWrite(leds_dks124.p_leds[BSP_LED_LED1], IOPORT_LEVEL_HIGH);
+        SSP_PARAMETER_NOT_USED(err);
+    }
     while(1)
     {
         /** 4. Run pending actions needed for the Application */
@@ -70,6 +81,7 @@ void hal_entry(void)
         ssp_err_t err = SSP_SUCCESS;
         err = g_sce_trng.p_api->close(g_sce_trng.p_ctrl);
         err = g_sce.p_api->close(g_sce.p_ctrl);
+        SSP_PARAMETER_NOT_USED(err);
     }
 }
 
@@ -86,4 +98,7 @@ void RBLE_Client_Connection(uint32_t status)
     {
         g_ioport_on_ioport.pinWrite(leds_dks124.p_leds[BSP_LED_LED2], IOPORT_LEVEL_LOW);
     }
+
+    SSP_PARAMETER_NOT_USED(err);
 }
+

@@ -1,21 +1,9 @@
-16:25:15 **** Incremental Build of configuration Debug for project Environment_Sensor ****
+14:07:14 **** Incremental Build of configuration Debug for project Environment_Sensor ****
 make -j4 all 
-'Building file: ../src/hal_entry.c'
+'Building file: ../src/rBLE/src/sample_app/app.c'
 'Invoking: Cross ARM C Compiler'
-C:\Renesas\Synergy\e2sv621\eclipse\/../\Utilities\\/isdebuild arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g3 -D_RENESAS_SYNERGY_ -DUSE_SAMPLE_PROFILE=1 -DUSE_PAIRING_JUSTWORKS -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy_cfg\ssp_cfg\bsp" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy_cfg\ssp_cfg\driver" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc\bsp" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc\bsp\cmsis\Include" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc\driver\api" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc\driver\instances" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\synergy_gen" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\src\include" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\src\include\host" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\src\rscip" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\src\sample_profile" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\deps" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\deps\serial" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\deps\timer" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\deps\logger" -std=c99 -MMD -MP -MF"src/hal_entry.d" -MT"src/hal_entry.o" -c -o "src/hal_entry.o" -x c "../src/hal_entry.c"
-../src/hal_entry.c: In function 'hal_entry':
-../src/hal_entry.c:70:19: warning: variable 'err' set but not used [-Wunused-but-set-variable]
-         ssp_err_t err = SSP_SUCCESS;
-                   ^
-../src/hal_entry.c: At top level:
-../src/hal_entry.c:76:6: warning: no previous declaration for 'RBLE_Client_Connection' [-Wmissing-declarations]
- void RBLE_Client_Connection(uint32_t status)
-      ^
-../src/hal_entry.c: In function 'RBLE_Client_Connection':
-../src/hal_entry.c:79:15: warning: unused variable 'err' [-Wunused-variable]
-     ssp_err_t err = R_BSP_LedsGet(&leds_dks124);
-               ^
-'Finished building: ../src/hal_entry.c'
+C:\Renesas\Synergy\e2sv621\eclipse\/../\Utilities\\/isdebuild arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g3 -D_RENESAS_SYNERGY_ -DUSE_SAMPLE_PROFILE=1 -DUSE_PAIRING_JUSTWORKS -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy_cfg\ssp_cfg\bsp" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy_cfg\ssp_cfg\driver" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc\bsp" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc\bsp\cmsis\Include" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc\driver\api" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\synergy\ssp\inc\driver\instances" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\synergy_gen" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\src\include" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\src\include\host" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\src\rscip" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\src\sample_profile" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\deps" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\deps\serial" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\deps\timer" -I"C:\Users\onkar.raut\Documents\2019H2\Firmware\BLE\S124\Environment_Sensor\src\rBLE\deps\logger" -std=c99 -MMD -MP -MF"src/rBLE/src/sample_app/app.d" -MT"src/rBLE/src/sample_app/app.o" -c -o "src/rBLE/src/sample_app/app.o" -x c "../src/rBLE/src/sample_app/app.c"
+'Finished building: ../src/rBLE/src/sample_app/app.c'
 ' '
 'Building target: Environment_Sensor.elf'
 'Invoking: Cross ARM C Linker'
@@ -27,11 +15,11 @@ arm-none-eabi-objcopy -O srec "Environment_Sensor.elf"  "Environment_Sensor.srec
 'Invoking: Cross ARM GNU Print Size'
 arm-none-eabi-size --format=berkeley "Environment_Sensor.elf"
    text	   data	    bss	    dec	    hex	filename
-  83320	    159	  13084	  96563	  17933	Environment_Sensor.elf
+  96964	    159	  13456	 110579	  1aff3	Environment_Sensor.elf
 'Finished building: Environment_Sensor.srec'
 'Finished building: Environment_Sensor.siz'
 ' '
 ' '
 
-16:25:20 Build Finished. 0 errors, 3 warnings. (took 5s.345ms)
+14:07:20 Build Finished. 0 errors, 0 warnings. (took 6s.216ms)
 

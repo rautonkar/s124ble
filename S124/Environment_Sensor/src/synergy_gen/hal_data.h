@@ -4,15 +4,20 @@
 #include <stdint.h>
 #include "bsp_api.h"
 #include "common_data.h"
+#include "r_gpt.h"
+#include "r_timer_api.h"
 #include "r_dtc.h"
 #include "r_transfer_api.h"
 #include "r_sci_uart.h"
 #include "r_uart_api.h"
-#include "r_gpt.h"
-#include "r_timer_api.h"
 #ifdef __cplusplus
 extern "C"
 {
+#endif
+/** Timer on GPT Instance. */
+extern const timer_instance_t g_timer_itr;
+#ifndef timer_iterator
+void timer_iterator(timer_callback_args_t *p_args);
 #endif
 /* Transfer on DTC Instance. */
 extern const transfer_instance_t g_transfer0;

@@ -25,6 +25,11 @@
 #include    "logger.h"
 #include    "app.h"
 
+#include    "db_handle.h"
+#include    "sam/sams.h"
+
+#include    "hal_data.h"
+
 //#define ENABLE_SET_NAME
 
 #ifdef ENABLE_SET_NAME
@@ -50,6 +55,41 @@ typedef enum {
     APP_DISP_STATUS,
     APP_DISP_FATAL,
 } APP_DISP_TYPE;
+
+typedef struct
+{
+    uint8_t ES_DESCRIPTOR_VALUE_CHANGED_VAL[1];
+    uint8_t ES_APPARENT_WIND_DIRECTION_VAL[2];
+    uint8_t ES_APPARENT_WIND_SPEED_VAL[2];
+    uint8_t ES_DEW_POINT_VAL[1];
+    uint8_t ES_ELEVATION_VAL[3];
+    uint8_t ES_GUST_FACTOR_VAL[1];
+    uint8_t ES_HEAT_INDEX_VAL[1];
+    uint8_t ES_HUMIDITY_VAL[2];
+    uint8_t ES_IRRADIANCE_VAL[2];
+    uint8_t ES_POLLEN_CONCENTRATION_VAL[3];
+    uint8_t ES_RAINFALL_VAL[2];
+    uint8_t ES_PRESSURE_VAL[4];
+    uint8_t ES_TEMPERATURE_VAL[2];
+    uint8_t ES_TRUE_WIND_DIRECTION_VAL[2];
+    uint8_t ES_TRUE_WIND_SPEED_VAL[2];
+    uint8_t ES_UV_INDEX_VAL[1];
+    uint8_t ES_WIND_CHILL_VAL[1];
+    uint8_t ES_BAROMETRIC_PRESSURE_TREND_VAL[1];
+    uint8_t ES_MAGNETIC_DECLINATION_VAL[2];
+    uint8_t ES_MAGNETIC_FLUX_DENSITY___2D_VAL[4];
+    uint8_t ES_MAGNETIC_FLUX_DENSITY___3D_VAL[6];
+    uint8_t DI_MANUFACTURER_NAME_STRING_VAL[7];
+    uint8_t DI_MODEL_NUMBER_STRING_VAL[7];
+    uint8_t DI_SERIAL_NUMBER_STRING_VAL[7];
+    uint8_t DI_HARDWARE_REVISION_STRING_VAL[7];
+    uint8_t DI_FIRMWARE_REVISION_STRING_VAL[7];
+    uint8_t DI_SOFTWARE_REVISION_STRING_VAL[7];
+    uint8_t DI_SYSTEM_ID_VAL[8];
+    uint8_t DI_IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_VAL[6];
+    uint8_t DI_PNP_ID_VAL[7];
+    uint8_t BS_BATTERY_LEVEL_VAL[1];
+}environmental_sensor_t;
 
 /******************************* PRIVATE PROTOTYPE ************************************/
 static void APP_RBLE_CallBack( RBLE_MODE mode );
@@ -83,6 +123,9 @@ static bool APP_GAP_RPA_Resolved_CallBack( RBLE_GAP_EVENT *event );
 static bool APP_GAP_Bonding_Request_CallBack( RBLE_GAP_EVENT *event );
 static bool APP_GAP_Get_Device_Info_CallBack(RBLE_GAP_EVENT *event );
 
+static RBLE_STATUS APP_ESS_Enable_Command(void);
+static RBLE_STATUS APP_ESS_Disable_Command(void);
+static RBLE_STATUS APP_ESS_Set_Value_Command(uint16_t char_hdl, uint8_t * p_data);
 
 
 /* --------------------------------- Utility -----------------------------------------*/
@@ -112,7 +155,7 @@ bool             FoundFlg      ;
 bool             CheckedIrkFlg ;
 uint8_t          Flash_cmd = NULL;
 RBLE_BD_ADDR BdAddress = {{ 0x45, 0x01, 0xDE, 0xFA, 0xFE, 0xCA }};
-
+environmental_sensor_t  es_ble;
 
 
 #if (USE_LCD==true)
@@ -199,6 +242,14 @@ static bool APP_GAP_Get_Device_Info_CallBack(RBLE_GAP_EVENT *event )
     }
     return ( ret );
 }
+
+/**************************************************************************************/
+/**
+ *  @brief      Application Update Environment Parameter
+ *
+ *  @retval     true if succeeded , false if failed
+ */
+/******************************************************************************************/
 
 
 /**************************************************************************************/
@@ -331,6 +382,215 @@ RBLE_STATUS APP_Run( void )
                  ret_status = APP_VS_Flash_Management_Command();
                  LOGGER(APP_VS_Flash_Management_Command);
                  break;
+
+            case RBLE_APP_ENVIRONMENT_SENSING_SERVER_Enable_CMD:
+                 ret_status = APP_ESS_Enable_Command();
+                 LOGGER(APP_ESS_Enable_Command);
+            break;
+
+            case RBLE_APP_ENVIRONMENT_SENSING_SERVER_Disable_CMD:
+                ret_status = APP_ESS_Disable_Command ();
+                LOGGER(APP_ESS_Disable_Command);
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_APPARENT_WIND_DIRECTION_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_APPARENT_WIND_DIRECTION_VAL,
+                                           &es_ble.ES_APPARENT_WIND_DIRECTION_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_APPARENT_WIND_SPEED_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_APPARENT_WIND_SPEED_VAL,
+                                           &es_ble.ES_APPARENT_WIND_SPEED_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_DEW_POINT_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_DEW_POINT_VAL, &es_ble.ES_DEW_POINT_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_ELEVATION_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_ELEVATION_VAL, &es_ble.ES_ELEVATION_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_GUST_FACTOR_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_GUST_FACTOR_VAL, &es_ble.ES_GUST_FACTOR_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_HEAT_INDEX_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_HEAT_INDEX_VAL, &es_ble.ES_HEAT_INDEX_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_HUMIDITY_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_HUMIDITY_VAL, &es_ble.ES_HUMIDITY_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_IRRADIANCE_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_IRRADIANCE_VAL, &es_ble.ES_IRRADIANCE_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_POLLEN_CONCENTRATION_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_POLLEN_CONCENTRATION_VAL,
+                                           &es_ble.ES_POLLEN_CONCENTRATION_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_RAINFALL_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_RAINFALL_VAL, &es_ble.ES_RAINFALL_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_PRESSURE_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_PRESSURE_VAL, &es_ble.ES_PRESSURE_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_TEMPERATURE_CMD:
+            {
+                es_ble.ES_TEMPERATURE_VAL[0]++;
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_TEMPERATURE_VAL, &es_ble.ES_TEMPERATURE_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_TRUE_WIND_DIRECTION_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_TRUE_WIND_DIRECTION_VAL,
+                                           &es_ble.ES_TRUE_WIND_DIRECTION_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_TRUE_WIND_SPEED_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_TRUE_WIND_SPEED_VAL,
+                                           &es_ble.ES_TRUE_WIND_SPEED_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_UV_INDEX_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_UV_INDEX_VAL, &es_ble.ES_UV_INDEX_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_WIND_CHILL_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_WIND_CHILL_VAL, &es_ble.ES_WIND_CHILL_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_BAROMETRIC_PRESSURE_TREND_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_BAROMETRIC_PRESSURE_TREND_VAL,
+                                           &es_ble.ES_BAROMETRIC_PRESSURE_TREND_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_MAGNETIC_DECLINATION_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_MAGNETIC_DECLINATION_VAL,
+                                           &es_ble.ES_MAGNETIC_DECLINATION_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_MAGNETIC_FLUX_DENSITY___2D_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_MAGNETIC_FLUX_DENSITY___2D_VAL,
+                                           &es_ble.ES_MAGNETIC_FLUX_DENSITY___2D_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_MAGNETIC_FLUX_DENSITY___3D_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_ES_MAGNETIC_FLUX_DENSITY___3D_VAL,
+                                           &es_ble.ES_MAGNETIC_FLUX_DENSITY___3D_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_MANUFACTURER_NAME_STRING_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_DI_MANUFACTURER_NAME_STRING_VAL,
+                                           &es_ble.DI_MANUFACTURER_NAME_STRING_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_MODEL_NUMBER_STRING_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_DI_MODEL_NUMBER_STRING_VAL,
+                                           &es_ble.DI_MODEL_NUMBER_STRING_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_SERIAL_NUMBER_STRING_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_DI_SERIAL_NUMBER_STRING_VAL,
+                                           &es_ble.DI_SERIAL_NUMBER_STRING_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_HARDWARE_REVISION_STRING_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_DI_HARDWARE_REVISION_STRING_VAL,
+                                           &es_ble.DI_HARDWARE_REVISION_STRING_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_FIRMWARE_REVISION_STRING_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_DI_FIRMWARE_REVISION_STRING_VAL,
+                                           &es_ble.DI_FIRMWARE_REVISION_STRING_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_SOFTWARE_REVISION_STRING_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_DI_SOFTWARE_REVISION_STRING_VAL,
+                                           &es_ble.DI_SOFTWARE_REVISION_STRING_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_SYSTEM_ID_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_DI_SYSTEM_ID_VAL, &es_ble.DI_SYSTEM_ID_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CMD:
+            {
+                APP_ESS_Set_Value_Command (
+                        ENVIRONMENTAL_SENSING_HDL_DI_IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_VAL,
+                        &es_ble.DI_IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_PNP_ID_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_DI_PNP_ID_VAL, &es_ble.DI_PNP_ID_VAL[0]);
+            }
+            break;
+
+            case RBLE_APP_ENVIRONMENTAL_SENSING_Set_Param_BATTERY_LEVEL_CMD:
+            {
+                APP_ESS_Set_Value_Command (ENVIRONMENTAL_SENSING_HDL_BS_BATTERY_LEVEL_VAL,
+                                           &es_ble.BS_BATTERY_LEVEL_VAL[0]);
+            }
+            break;
 
             case EXIT_CMD:
                  APP_RBLE_Exit_Command();
@@ -775,7 +1035,8 @@ static bool APP_GAP_Connection_CallBack( RBLE_GAP_EVENT *event )
         CheckedIrkFlg  = false;
         ret_status = true;
 
-        /* TODO: Call the Enable Function Generated by Bluetooth Developer Studio below */
+        /* Call the Enable Function Generated by Bluetooth Developer Studio below */
+        APP_Set_RunCmd(RBLE_APP_ENVIRONMENT_SENSING_SERVER_Enable_CMD);
 
         /* Indicate successful connection */
         RBLE_Client_Connection(1);
@@ -937,6 +1198,342 @@ static bool APP_GAP_Bonding_Request_CallBack( RBLE_GAP_EVENT *event )
     return( false );
 }
 
+static ENVIRONMENTAL_SENSING_SERVER_PARAM environmental_sensing_server_param =
+{
+  .es_descriptor_value_changed_char_cccd = 0,
+  .es_apparent_wind_direction_char_cccd = 0,
+  .es_apparent_wind_speed_char_cccd = 0,
+  .es_dew_point_char_cccd = 0,
+  .es_elevation_char_cccd = 0,
+  .es_gust_factor_char_cccd = 0,
+  .es_heat_index_char_cccd = 0,
+  .es_humidity_char_cccd = 0,
+  .es_irradiance_char_cccd = 0,
+  .es_pollen_concentration_char_cccd = 0,
+  .es_rainfall_char_cccd = 0,
+  .es_pressure_char_cccd = 0,
+  .es_temperature_char_cccd = 0,
+  .es_true_wind_direction_char_cccd = 0,
+  .es_true_wind_speed_char_cccd = 0,
+  .es_uv_index_char_cccd = 0,
+  .es_wind_chill_char_cccd = 0,
+  .es_barometric_pressure_trend_char_cccd = 0,
+  .es_magnetic_declination_char_cccd = 0,
+  .es_magnetic_flux_density___2d_char_cccd = 0,
+  .es_magnetic_flux_density___3d_char_cccd = 0,
+  .bs_battery_level_char_cccd = 0,
+};
+
+static void environmental_sensing_server_cccd_write_service(uint16_t char_hdl, uint16_t value)
+{
+    switch(char_hdl)
+    {
+        case ENVIRONMENTAL_SENSING_HDL_ES_DESCRIPTOR_VALUE_CHANGED_CCCD:
+        {
+            environmental_sensing_server_param.es_descriptor_value_changed_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_APPARENT_WIND_DIRECTION_CCCD:
+        {
+            environmental_sensing_server_param.es_apparent_wind_direction_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_APPARENT_WIND_SPEED_CCCD:
+        {
+            environmental_sensing_server_param.es_apparent_wind_speed_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_DEW_POINT_CCCD:
+        {
+            environmental_sensing_server_param.es_dew_point_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_ELEVATION_CCCD:
+        {
+            environmental_sensing_server_param.es_elevation_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_GUST_FACTOR_CCCD:
+        {
+            environmental_sensing_server_param.es_gust_factor_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_HEAT_INDEX_CCCD:
+        {
+            environmental_sensing_server_param.es_heat_index_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_HUMIDITY_CCCD:
+        {
+            environmental_sensing_server_param.es_humidity_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_IRRADIANCE_CCCD:
+        {
+            environmental_sensing_server_param.es_irradiance_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_POLLEN_CONCENTRATION_CCCD:
+        {
+            environmental_sensing_server_param.es_pollen_concentration_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_RAINFALL_CCCD:
+        {
+            environmental_sensing_server_param.es_rainfall_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_PRESSURE_CCCD:
+        {
+            environmental_sensing_server_param.es_pressure_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_TEMPERATURE_CCCD:
+        {
+            environmental_sensing_server_param.es_temperature_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_TRUE_WIND_DIRECTION_CCCD:
+        {
+            environmental_sensing_server_param.es_true_wind_direction_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_TRUE_WIND_SPEED_CCCD:
+        {
+            environmental_sensing_server_param.es_true_wind_speed_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_UV_INDEX_CCCD:
+        {
+            environmental_sensing_server_param.es_uv_index_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_WIND_CHILL_CCCD:
+        {
+            environmental_sensing_server_param.es_wind_chill_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_BAROMETRIC_PRESSURE_TREND_CCCD:
+        {
+            environmental_sensing_server_param.es_barometric_pressure_trend_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_MAGNETIC_DECLINATION_CCCD:
+        {
+            environmental_sensing_server_param.es_magnetic_declination_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_MAGNETIC_FLUX_DENSITY___2D_CCCD:
+        {
+            environmental_sensing_server_param.es_magnetic_flux_density___2d_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_ES_MAGNETIC_FLUX_DENSITY___3D_CCCD:
+        {
+            environmental_sensing_server_param.es_magnetic_flux_density___3d_char_cccd = value;
+        }
+        break;
+        case ENVIRONMENTAL_SENSING_HDL_BS_BATTERY_LEVEL_CCCD:
+        {
+            environmental_sensing_server_param.bs_battery_level_char_cccd = value;
+        }
+        break;
+
+        default:
+        {
+            ;
+        }
+        break;
+    }
+}
+
+static void ENVIRONMENTAL_SENSING_SERVER_EVENT_CALLBACK(ENVIRONMENTAL_SENSING_SERVER_EVENT *event)
+{
+    if(ConnectionHdl == event->conhdl)
+    {
+        if(RBLE_OK == event->status)
+        {
+            switch(event->type)
+            {
+                case ENVIRONMENTAL_SENSING_SERVER_EVENT_ENABLE_COMP:
+                {
+                    /* Load new values into the BLE Copy */
+                }
+                break;
+
+                case ENVIRONMENTAL_SENSING_SERVER_EVENT_DISABLE_COMP:
+                {
+                    ENVIRONMENTAL_SENSING_SERVER_PARAM *p1 = &environmental_sensing_server_param;
+                    ENVIRONMENTAL_SENSING_SERVER_PARAM *p2 = &event->param.disable_comp_evt.param;
+                    *p1 = *p2;
+                }
+                break;
+
+                case ENVIRONMENTAL_SENSING_SERVER_EVENT_CCCD_WRITE:
+                {
+                    environmental_sensing_server_cccd_write_service(event->param.cccd_write_evt.char_hdl,
+                                                                    event->param.cccd_write_evt.value);
+                }
+                break;
+
+                case ENVIRONMENTAL_SENSING_SERVER_EVENT_NOTIFY_COMP:
+                case ENVIRONMENTAL_SENSING_SERVER_EVENT_INDICATE_COMP:
+                case ENVIRONMENTAL_SENSING_SERVER_EVENT_SET_VALUE_COMP:
+                {
+                    ;
+                }
+                break;
+
+                default:
+                {
+                    ;
+                }
+                break;
+            }
+
+        }
+
+    }
+}
+
+static RBLE_STATUS APP_ESS_Enable_Command(void)
+{
+    RBLE_STATUS rble_err = RBLE_OK;
+
+    if(ConnectionHdl != ILLEGAL_CONNECTION_HANDLE)
+    {
+        rble_err = ENVIRONMENTAL_SENSING_Server_Enable(ConnectionHdl, ConnectionType,
+                                                       &environmental_sensing_server_param, ENVIRONMENTAL_SENSING_SERVER_EVENT_CALLBACK);
+    }
+    return rble_err;
+}
+
+static RBLE_STATUS APP_ESS_Disable_Command(void)
+{
+    RBLE_STATUS rble_err = RBLE_OK;
+
+    if(ConnectionHdl != ILLEGAL_CONNECTION_HANDLE)
+    {
+        rble_err = ENVIRONMENTAL_SENSING_Server_Disable(ConnectionHdl);
+    }
+
+    return rble_err;
+}
+
+static RBLE_STATUS APP_ESS_Set_Value_Command(uint16_t char_hdl, uint8_t * p_data)
+{
+    RBLE_STATUS rble_err = RBLE_OK;
+    uint16_t cccd = 0;
+
+    if(ConnectionHdl != ILLEGAL_CONNECTION_HANDLE)
+    {
+        switch( char_hdl )
+        {
+            case ENVIRONMENTAL_SENSING_HDL_ES_DESCRIPTOR_VALUE_CHANGED_VAL:
+                cccd = environmental_sensing_server_param.es_descriptor_value_changed_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_APPARENT_WIND_DIRECTION_VAL:
+                cccd = environmental_sensing_server_param.es_apparent_wind_direction_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_APPARENT_WIND_SPEED_VAL:
+                cccd = environmental_sensing_server_param.es_apparent_wind_speed_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_DEW_POINT_VAL:
+                cccd = environmental_sensing_server_param.es_dew_point_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_ELEVATION_VAL:
+                cccd = environmental_sensing_server_param.es_elevation_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_GUST_FACTOR_VAL:
+                cccd = environmental_sensing_server_param.es_gust_factor_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_HEAT_INDEX_VAL:
+                cccd = environmental_sensing_server_param.es_heat_index_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_HUMIDITY_VAL:
+                cccd = environmental_sensing_server_param.es_humidity_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_IRRADIANCE_VAL:
+                cccd = environmental_sensing_server_param.es_irradiance_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_POLLEN_CONCENTRATION_VAL:
+                cccd = environmental_sensing_server_param.es_pollen_concentration_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_RAINFALL_VAL:
+                cccd = environmental_sensing_server_param.es_rainfall_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_PRESSURE_VAL:
+                cccd = environmental_sensing_server_param.es_pressure_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_TEMPERATURE_VAL:
+                cccd = environmental_sensing_server_param.es_temperature_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_TRUE_WIND_DIRECTION_VAL:
+                cccd = environmental_sensing_server_param.es_true_wind_direction_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_TRUE_WIND_SPEED_VAL:
+                cccd = environmental_sensing_server_param.es_true_wind_speed_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_UV_INDEX_VAL:
+                cccd = environmental_sensing_server_param.es_uv_index_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_WIND_CHILL_VAL:
+                cccd = environmental_sensing_server_param.es_wind_chill_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_BAROMETRIC_PRESSURE_TREND_VAL:
+                cccd = environmental_sensing_server_param.es_barometric_pressure_trend_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_MAGNETIC_DECLINATION_VAL:
+                cccd = environmental_sensing_server_param.es_magnetic_declination_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_MAGNETIC_FLUX_DENSITY___2D_VAL:
+                cccd = environmental_sensing_server_param.es_magnetic_flux_density___2d_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_ES_MAGNETIC_FLUX_DENSITY___3D_VAL:
+                cccd = environmental_sensing_server_param.es_magnetic_flux_density___2d_char_cccd;
+                break;
+
+            case ENVIRONMENTAL_SENSING_HDL_BS_BATTERY_LEVEL_VAL:
+                cccd = environmental_sensing_server_param.es_magnetic_flux_density___2d_char_cccd;
+                break;
+
+            default:
+                return RBLE_PARAM_ERR;
+        }
+
+        if(ENVIRONMENTAL_SENSING_SERVER_DESC_ALL_DISABLE == cccd)
+        {
+            rble_err = ENVIRONMENTAL_SENSING_Server_Set_Value(char_hdl, p_data);
+        }
+        else
+        {
+            rble_err = ENVIRONMENTAL_SENSING_Server_Char_NtfInd(ConnectionHdl, char_hdl, p_data, cccd);
+        }
+    }
+
+    return rble_err;
+}
+
 /* --------------------------- Utility -------------------------------------*/
 
 /******************************************************************************************/
@@ -995,3 +1592,16 @@ bool APP_Compare_BDAddr(RBLE_BD_ADDR* a, RBLE_BD_ADDR* b)
     return true;
 }
 
+void timer_iterator(timer_callback_args_t * p_args)
+{
+    if(ILLEGAL_CONNECTION_HANDLE != ConnectionHdl)
+    {
+        bsp_leds_t leds_dks124;
+        ssp_err_t err = R_BSP_LedsGet(&leds_dks124);
+        static ioport_level_t level = IOPORT_LEVEL_HIGH;
+        g_ioport_on_ioport.pinWrite(leds_dks124.p_leds[BSP_LED_LED3], level = (level == IOPORT_LEVEL_HIGH) ? IOPORT_LEVEL_LOW:IOPORT_LEVEL_HIGH);
+        APP_Set_RunCmd(RBLE_APP_ENVIRONMENTAL_SENSING_SERVER_Set_Param_TEMPERATURE_CMD);
+        SSP_PARAMETER_NOT_USED(err);
+    }
+    SSP_PARAMETER_NOT_USED(p_args);
+}

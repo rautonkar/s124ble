@@ -1,5 +1,26 @@
 /* generated HAL source file - do not edit */
 #include "hal_data.h"
+#if (1) != BSP_IRQ_DISABLED
+#if !defined(SSP_SUPPRESS_ISR_g_timer_itr) && !defined(SSP_SUPPRESS_ISR_GPT0)
+SSP_VECTOR_DEFINE_CHAN(gpt_counter_overflow_isr, GPT, COUNTER_OVERFLOW, 0);
+#endif
+#endif
+static gpt_instance_ctrl_t g_timer_itr_ctrl;
+static const timer_on_gpt_cfg_t g_timer_itr_extend =
+{ .gtioca =
+{ .output_enabled = false, .stop_level = GPT_PIN_LEVEL_LOW },
+  .gtiocb =
+  { .output_enabled = false, .stop_level = GPT_PIN_LEVEL_LOW },
+  .shortest_pwm_signal = GPT_SHORTEST_LEVEL_OFF, };
+static const timer_cfg_t g_timer_itr_cfg =
+{ .mode = TIMER_MODE_PERIODIC, .period = 10, .unit = TIMER_UNIT_PERIOD_SEC, .duty_cycle = 50, .duty_cycle_unit =
+          TIMER_PWM_UNIT_RAW_COUNTS,
+  .channel = 0, .autostart = true, .p_callback = timer_iterator, .p_context = &g_timer_itr, .p_extend =
+          &g_timer_itr_extend,
+  .irq_ipl = (1), };
+/* Instance structure to use this module. */
+const timer_instance_t g_timer_itr =
+{ .p_ctrl = &g_timer_itr_ctrl, .p_cfg = &g_timer_itr_cfg, .p_api = &g_timer_on_gpt };
 #if (BSP_IRQ_DISABLED) != BSP_IRQ_DISABLED
 #if !defined(SSP_SUPPRESS_ISR_g_transfer0) && !defined(SSP_SUPPRESS_ISR_DTCELC_EVENT_SCI9_TXI)
 #define DTC_ACTIVATION_SRC_ELC_EVENT_SCI9_TXI
@@ -89,8 +110,8 @@ const uart_cfg_t g_uart_ble_cfg =
 const uart_instance_t g_uart_ble =
 { .p_ctrl = &g_uart_ble_ctrl, .p_cfg = &g_uart_ble_cfg, .p_api = &g_uart_on_sci };
 #if (2) != BSP_IRQ_DISABLED
-#if !defined(SSP_SUPPRESS_ISR_g_timer_ble) && !defined(SSP_SUPPRESS_ISR_GPT0)
-SSP_VECTOR_DEFINE_CHAN(gpt_counter_overflow_isr, GPT, COUNTER_OVERFLOW, 0);
+#if !defined(SSP_SUPPRESS_ISR_g_timer_ble) && !defined(SSP_SUPPRESS_ISR_GPT1)
+SSP_VECTOR_DEFINE_CHAN(gpt_counter_overflow_isr, GPT, COUNTER_OVERFLOW, 1);
 #endif
 #endif
 static gpt_instance_ctrl_t g_timer_ble_ctrl;
@@ -103,7 +124,7 @@ static const timer_on_gpt_cfg_t g_timer_ble_extend =
 static const timer_cfg_t g_timer_ble_cfg =
 { .mode = TIMER_MODE_PERIODIC, .period = 10, .unit = TIMER_UNIT_PERIOD_MSEC, .duty_cycle = 50, .duty_cycle_unit =
           TIMER_PWM_UNIT_RAW_COUNTS,
-  .channel = 0, .autostart = true, .p_callback = rBLE_timer_isr, .p_context = &g_timer_ble, .p_extend =
+  .channel = 1, .autostart = true, .p_callback = rBLE_timer_isr, .p_context = &g_timer_ble, .p_extend =
           &g_timer_ble_extend,
   .irq_ipl = (2), };
 /* Instance structure to use this module. */
