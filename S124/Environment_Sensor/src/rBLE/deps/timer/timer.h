@@ -36,7 +36,7 @@ typedef void (*RBLE_FUNC)(void);
 
 typedef enum Timer_enum {
 	_RBLE_TIMER_ID_RSCIP,
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
 	_RBLE_TIMER_ID_SERIAL,
 #endif
 	_RBLE_TIMER_MAX

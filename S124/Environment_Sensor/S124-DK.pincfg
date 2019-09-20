@@ -403,7 +403,6 @@
   <v1:propertySetting propertyId="p000.comment" value="Light Sensor"/>
   <v1:propertySetting propertyId="p014.comment" value="Headphone jack"/>
   <v1:configSetting configurationId="p104.gpio_mode" altId="p104.gpio_mode.gpio_mode_in"/>
-  <v1:configSetting configurationId="p104" altId="p104.input"/>
   <v1:configSetting configurationId="p206.gpio_mode" altId="p206.gpio_mode.gpio_mode_in"/>
   <v1:configSetting configurationId="p206" altId="p206.input"/>
   <v1:configSetting configurationId="p004.gpio_mode" altId="p004.gpio_mode.gpio_mode_in"/>
@@ -439,4 +438,5 @@
   </v1:configSetting>
   <v1:configSetting configurationId="p213.gpio_mode" altId="p213.gpio_mode.gpio_mode_peripheral"/>
   <v1:configSetting configurationId="p215.gpio_mode" altId="p215.gpio_mode.gpio_mode_peripheral"/>
+  <v1:configSetting configurationId="p104" altId="p104.input"/>
 </v1:pinSettings>

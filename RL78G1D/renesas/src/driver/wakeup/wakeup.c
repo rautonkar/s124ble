@@ -19,10 +19,12 @@
  * @{
  ****************************************************************************************
  */
+#ifndef USE_WAKEUP_SIGNAL_PORT
 #ifndef CONFIG_EMBEDDED
  #define USE_WAKEUP_SIGNAL_PORT  (0) /* Modem Setting */
 #else
  #define USE_WAKEUP_SIGNAL_PORT  (0) /* Embedded Setting */
+#endif
 #endif
 
 #if USE_WAKEUP_SIGNAL_PORT

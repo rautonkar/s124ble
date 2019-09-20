@@ -37,7 +37,7 @@
 #include "rscip_cntl.h"
 #include "rscip_uart.h"
 #include "uart.h"
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
 #include "timer.h"
 #endif
 
@@ -48,7 +48,7 @@
 #define RSCIP_RXD_PIN (GPIO_PORT_0_PIN_2)
 #define RSCIP_TXD_PIN (GPIO_PORT_0_PIN_7)
 
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
 /* transmission request code */
 #define UART_REQ_BYTE       (0xC0)
 #define UART_REQ_BYTE_SIZE  (1)
@@ -78,7 +78,7 @@ static uint8_t      *g_sci_rx_buf;
 static uint16_t     g_sci_rx_size;
 static uint16_t     g_sci_rx_count;
 
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
 static uint8_t      g_uart_req_byte_buf = UART_REQ_BYTE;
 
 static uint8_t      g_sci_tx_stat;
@@ -95,7 +95,7 @@ void ble_uart_callback(uart_callback_args_t *data);
 static void uart_sr_isr(uint8_t byte);
 static void uart_st_isr(void);
 static void uart_sre_isr(uart_event_t event);
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
 static void uart_tx_timeout(void);
 #endif
 
@@ -110,7 +110,7 @@ BOOL serial_init(void * p_arg)
     uart_instance_t const * const p_uart = p_arg;
     uart_cfg_t const * const p_cfg = p_uart->p_cfg;
 
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
     g_sci_tx_stat = T_IDLE;
 #endif
 
@@ -179,7 +179,7 @@ BOOL serial_write(uint8_t *bufptr, uint16_t size)
 {
     ssp_err_t err;
 
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
     g_sci_tx_stat   = T_REQUESTING;
 
     g_sci_tx_buf    = bufptr;
@@ -235,8 +235,13 @@ void ble_uart_callback(uart_callback_args_t *data)
  ******************************************************************************/
 void uart_sr_isr(uint8_t byte)
 {
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
+    if(g_sci_rx_buf != NULL)
+    {
+        g_sci_rx_buf[g_sci_rx_count] = byte;
+    }
     g_sci_rx_count++;
+
     if (g_sci_rx_count == g_sci_rx_size) {
 
         g_sci_handle->p_api->read(g_sci_handle->p_ctrl, g_sci_rx_buf, g_sci_rx_size);
@@ -292,7 +297,7 @@ void uart_sr_isr(uint8_t byte)
  ******************************************************************************/
 void uart_st_isr(void)
 {
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
     if(g_sci_tx_stat == T_REQUESTING)
     {
         g_sci_tx_stat = T_REQUESTED;
@@ -343,7 +348,7 @@ void uart_sre_isr(uart_event_t event)
     }
 }
 
-#if (SF_RBLE_CFG_SERIAL_U_DIV_2WIRE)
+#if (SERIAL_U_DIV_2WIRE)
 /*******************************************************************************
  * Function Name: uart_tx_timeout
  * Description  : re-request to tx after timeout timer was expired
@@ -374,4 +379,4 @@ static void uart_tx_timeout(void)
         }
     }
 }
-#endif /* SF_RBLE_CFG_SERIAL_U_DIV_2WIRE */
+#endif /* SERIAL_U_DIV_2WIRE */

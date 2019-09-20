@@ -1,4 +1,9 @@
 eclipse.preferences.version=1
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.2019930135.2014326173/SECURE_BUILD_COMMAND/delimiter=
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.2019930135.2014326173/SECURE_BUILD_COMMAND/operation=replace
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.2019930135.2014326173/SECURE_BUILD_COMMAND/value=${renesas.support.targetLoc\:synergy-build}/isdebuild
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.2019930135.2014326173/append=true
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.2019930135.2014326173/appendContributed=true
 environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.2019930135/SECURE_BUILD_COMMAND/delimiter=
 environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.2019930135/SECURE_BUILD_COMMAND/operation=replace
 environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.2019930135/SECURE_BUILD_COMMAND/value=${renesas.support.targetLoc\:synergy-build}/isdebuild

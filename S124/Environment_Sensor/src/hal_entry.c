@@ -14,9 +14,14 @@ void hal_entry(void)
     extern bool APP_Init(void * p_uart);
     extern RBLE_STATUS APP_Run( void );
     extern const timer_instance_t g_timer_ble;
+#if (USE_SERIAL_U_2WIRE)
     extern const uart_instance_t g_uart_ble;
-
-    uart_instance_t const * const p_uart_ble = &g_uart_ble;
+#elif (USE_SERIAL_C_4WIRE)
+    /* Not Tested */
+    extern const spi_instance_t g_spi_ble;
+#else
+#error "Serial Communication interface not selected."
+#endif
 
     /** 0. Initialize random number generator */
     {
@@ -49,7 +54,12 @@ void hal_entry(void)
     if(RBLE_OK==rble_status)
     {
         /** 3. Initialize the Application and the RBLE Host stack */
-        rble_status = (true==APP_Init((void * )p_uart_ble)) ? RBLE_OK:RBLE_ERR;
+#if (USE_SERIAL_U_2WIRE)
+        rble_status = (true==APP_Init((void * )&g_uart_ble)) ? RBLE_OK:RBLE_ERR;
+#elif (USE_SERIAL_C_4WIRE)
+        /* Not Tested */
+        rble_status = (true==APP_Init((void * )&g_spi_ble)) ? RBLE_OK:RBLE_ERR;
+#endif
     }
 
     while(RBLE_OK!=rble_status)

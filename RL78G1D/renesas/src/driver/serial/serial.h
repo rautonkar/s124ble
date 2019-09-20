@@ -40,13 +40,29 @@
  * DEFINES
  ****************************************************************************************
  */
+#if USE_SERIAL_U_2WIRE
 #define SERIAL_U_2WIRE      (1)
-#define SERIAL_U_3WIRE      (0)
-#define SERIAL_U_DIV_2WIRE  (0)
-#define SERIAL_C_4WIRE      (0)
-#define SERIAL_C_5WIRE      (0)
-#define SERIAL_I_3WIRE      (0)
+#endif
 
+#if USE_SERIAL_U_3WIRE
+#define SERIAL_U_3WIRE      (0)
+#endif
+
+#if USE_SERIAL_U_DIV_2WIRE
+#define SERIAL_U_DIV_2WIRE  (1)
+#endif
+
+#if USE_SERIAL_C_4WIRE
+#define SERIAL_C_4WIRE      (1)
+#endif
+
+#if USE_SERIAL_C_5WIRE
+#define SERIAL_C_5WIRE      (1)
+#endif
+
+#if USE_SERIAL_I_3WIRE
+#define SERIAL_I_3WIRE      (0)
+#endif
 /*
  * STUCTURE DEFINITIONS
  *****************************************************************************************
